@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Actions\Tasks;
+namespace App\Actions\Job;
 
 use App\Models\Job;
 

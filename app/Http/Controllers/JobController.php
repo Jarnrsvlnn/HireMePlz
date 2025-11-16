@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Tasks\CreateJob;
+use App\Actions\Job\CreateJob;
 use App\Http\Requests\CreateJobRequest;
 use App\Models\Job;
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class JobController extends Controller
     public function create(CreateJobRequest $request, CreateJob $createJob)
     {
         $createJob($request->validated());
-        return redirect('/jobs');
+        return redirect('/jobs/create');
     }
 
     /**

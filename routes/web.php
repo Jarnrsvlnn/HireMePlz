@@ -11,6 +11,10 @@ Route::get('/jobs', function () {
     return view('job');
 });
 
+Route::get('/jobs/create', function () {
+    return view('createJob');
+});
+
 Route::get('/almanac', function () {
     return view('almanac');
 });
