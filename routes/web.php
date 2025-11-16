@@ -8,7 +8,11 @@ Route::get('/', function () {
 });
 
 Route::get('/jobs', function () {
-    return view('jobs');
+    return view('job');
 });
 
-Route::post('/jobs/create', [JobController::class, 'create']);
+Route::get('/almanac', function () {
+    return view('almanac');
+});
+
+Route::post('/jobs/create', [JobController::class, 'create']);  
