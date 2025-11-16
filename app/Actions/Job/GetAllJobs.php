@@ -4,7 +4,7 @@ namespace App\Actions\Job;
 
 use App\Models\Job;
 
-class ViewJob {
+class GetAllJobs {
 
     public function __invoke()
     {

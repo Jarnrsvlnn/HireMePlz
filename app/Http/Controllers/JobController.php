@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Job\CreateJob;
+use App\Actions\Job\GetAllJobs;
 use App\Http\Requests\CreateJobRequest;
 use App\Models\Job;
 use Illuminate\Http\Request;
@@ -12,9 +13,10 @@ class JobController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(GetAllJobs $getAllJobs)
     {
-        //
+        $jobs = $getAllJobs();
+        return view('listJobs', compact('jobs'));
     }
 
     /**

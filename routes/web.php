@@ -15,8 +15,10 @@ Route::get('/jobs/create', function () {
     return view('createJob');
 });
 
+Route::get('/jobs/all', [JobController::class, 'index']);
+
 Route::get('/almanac', function () {
     return view('almanac');
 });
 
-Route::post('/jobs/create', [JobController::class, 'create']);  
+Route::post('/jobs/create', [JobController::class, 'create']); 
