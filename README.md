@@ -17,9 +17,9 @@
 
 - #### Full CRUD chaos: Create, Read, Update, Delete — yes, delete. Sometimes deleting is the best choice.
 
-- #### Rarity system: Common, Uncommon, Rare, Legendary. Because some jobs are actually god tier (imo).
+- #### Rarity system: Common, Uncommon, Rare, Legendary. Because some jobs are actually god tier (imo ofcourse).
 
-- #### Popularity stats: Know exactly how many other human beings are cooked.
+- #### Popularity stats: Know exactly how many other human beings are cooked with their field.
 
 - #### Retro, pixel-like UI: Pixel icons, confetti, hover animations, maybe even some cursed colors.
 
@@ -29,6 +29,6 @@
 
 - #### Backend: Laravel 12 – because I like feeling professional even though I’m still a noob at this stack
 
-- #### Frontend: Tailwind CSS + Vanilla JS (because Vue can wait, and im not doing allat rn)
+- #### Frontend: Tailwind CSS + Vanilla JS (vuejs can wait, and im not doing allat rn)
 
 - #### Database: MySQL/MariaDB
