@@ -7,18 +7,12 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/jobs', function () {
-    return view('job');
+Route::get('/jobMenu', function () {
+    return view('job-menu');
 });
 
-Route::get('/jobs/create', function () {
-    return view('createJob');
-});
-
-Route::get('/jobs/all', [JobController::class, 'index']);
+Route::resource('jobs', JobController::class);
 
 Route::get('/almanac', function () {
     return view('almanac');
 });
-
-Route::post('/jobs/create', [JobController::class, 'create']); 

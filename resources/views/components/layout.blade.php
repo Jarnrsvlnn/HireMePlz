@@ -38,7 +38,7 @@
                             {{-- TABS --}}
                             <div class="flex overflow-x-auto whitespace-nowrap">
                                 <x-tabLinks href="/" :active="request()->is('/')"> Home </x-tabLinks>
-                                <x-tabLinks href="/jobs" :active="request()->is('jobs')"> Jobs </x-tabLinks>
+                                <x-tabLinks href="/jobMenu" :active="request()->is('jobs')"> Jobs </x-tabLinks>
                                 <x-tabLinks href="/almanac" :active="request()->is('almanac')"> Almanac </x-tabLinks>
                             </div>
                         </div>

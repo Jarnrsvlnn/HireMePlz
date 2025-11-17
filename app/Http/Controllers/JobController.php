@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Actions\Job\CreateJob;
 use App\Actions\Job\GetAllJobs;
+use App\Actions\Job\UpdateJob;
 use App\Http\Requests\CreateJobRequest;
+use App\Http\Requests\UpdateJobRequest;
 use App\Models\Job;
 use Illuminate\Http\Request;
 
@@ -16,24 +18,24 @@ class JobController extends Controller
     public function index(GetAllJobs $getAllJobs)
     {
         $jobs = $getAllJobs();
-        return view('listJobs', compact('jobs'));
+        return view('list-jobs', compact('jobs'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(CreateJobRequest $request, CreateJob $createJob)
+    public function create()
     {
-        $createJob($request->validated());
-        return redirect('/jobs/create')->with('success', 'Job created successfully! ');
+        return view('create-job');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateJobRequest $request, CreateJob $createJob)
     {
-        //
+        $createJob($request->validated());
+        return redirect('/jobs/create')->with('success', 'Job created successfully! ');
     }
 
     /**
@@ -41,23 +43,25 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        //
+        return view('job-details', compact('job'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
+    
     public function edit(Job $job)
     {
-        //
+        return view('edit-job', compact('job'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Job $job)
+    public function update(UpdateJobRequest $request, Job $job, UpdateJob $updateJob)
     {
-        //
+        $updateJob($job, $request->validated());
+        return redirect()->route('jobs.show', $job)->with('success', 'Updated!');
     }
 
     /**
