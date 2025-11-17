@@ -25,7 +25,7 @@ class JobController extends Controller
     public function create(CreateJobRequest $request, CreateJob $createJob)
     {
         $createJob($request->validated());
-        return redirect('/jobs/create');
+        return redirect('/jobs/create')->with('success', 'Job created successfully! ');
     }
 
     /**
