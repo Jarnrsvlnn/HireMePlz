@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Job\CreateJob;
+use App\Actions\Job\DeleteJob;
 use App\Actions\Job\GetAllJobs;
 use App\Actions\Job\UpdateJob;
 use App\Http\Requests\CreateJobRequest;
@@ -35,7 +36,7 @@ class JobController extends Controller
     public function store(CreateJobRequest $request, CreateJob $createJob)
     {
         $createJob($request->validated());
-        return redirect('/jobs/create')->with('success', 'Job created successfully! ');
+        return redirect()->route('jobs.create')->with('success', 'Job created successfully! ');
     }
 
     /**
@@ -67,8 +68,9 @@ class JobController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Job $job)
+    public function destroy(Job $job, DeleteJob $deleteJob)
     {
-        //
+        $deleteJob($job);
+        return redirect()->route('jobs.index')->with('success', 'Job Deleted!');
     }
 }

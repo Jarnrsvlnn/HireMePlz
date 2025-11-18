@@ -16,7 +16,7 @@
         {{-- CONTENT --}}
         <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
             <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Input Job Details</h2>
-            <form action="/jobs/create" method="POST"> 
+            <form action="{{ route('jobs.store') }}" method="POST"> 
                 @csrf
                 <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                     <div>
