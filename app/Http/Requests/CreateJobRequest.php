@@ -22,9 +22,10 @@ class CreateJobRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'job_title' => 'required',
-            'salary' => 'required',
-            'description' => 'required'
+            'job_title' => 'required|string|min:3|max:255',
+            'salary' => 'required|string',
+            'description' => 'required|string|min:3',
+            'job_tier' => 'required|string|in:Godlike,Legendary,Epic,Kinda mid,Uncommon,Common'
         ];
     }
 }

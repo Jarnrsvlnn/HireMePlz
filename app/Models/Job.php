@@ -9,6 +9,7 @@ class Job extends Model
     protected $fillable = [
         'job_title',
         'salary',
-        'description'
+        'description',
+        'job_tier'
     ];
 }

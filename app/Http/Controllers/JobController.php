@@ -25,9 +25,10 @@ class JobController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(GetAllJobs $getAllJobs)
     {
-        return view('create-job');
+        $jobs = $getAllJobs();
+        return view('create-job', compact('jobs'));
     }
 
     /**

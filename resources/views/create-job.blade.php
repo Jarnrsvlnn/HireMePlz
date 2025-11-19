@@ -16,12 +16,25 @@
         {{-- CONTENT --}}
         <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
             <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Input Job Details</h2>
+
             <form action="{{ route('jobs.store') }}" method="POST"> 
                 @csrf
                 <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                     <div>
                         <label class="text-gray-700 dark:text-gray-200" for="username">Job Title</label>
                         <input id="job_title" name="job_title" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                    </div>
+
+                    <div>
+                        <label class="text-gray-700 dark:text-gray-200" for="job_tier">Job Tier</label>
+                        <select name="job_tier" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                            <option value="Godlike">Godlike</option>
+                            <option value="Legendary">Legendary</option>
+                            <option value="Epic">Epic</option>  
+                            <option value="Kinda mid">Kinda mid</option>
+                            <option value="Uncommon">Uncommon</option>
+                            <option value="Common">Common</option>
+                        </select>
                     </div>
         
                     <div>

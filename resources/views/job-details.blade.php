@@ -17,8 +17,6 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                 </svg>
-                  
-            
                 <span class="mx-1">Edit</span>
             </button>
         </section>
@@ -33,7 +31,9 @@
                     <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"alt="">
     
                     <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
-                        <p class="text-sm text-blue-500 uppercase">Rarity: Legendary </p>
+                        <x-tier-coloring type="p" :tier="$job['job_tier']">
+                            Tier: {{ $job['job_tier'] }}
+                        </x-tier-coloring>
                         <h2 class="block mt-4 text-2xl font-semibold text-gray-800 dark:text-white">What does these <em>employed</em> beings even do?!</h2>
                         <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">{{ $job['description'] }}</p> 
         
@@ -63,26 +63,42 @@
                 <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Input Job Details</h2>
                 <form action="{{ route('jobs.update', $job) }}" method="POST"> 
                     @csrf
-                    @method('PUT');
+                    @method('PUT')
                     <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                        {{-- JOB TITLE --}}
                         <div>
                             <label class="text-gray-700 dark:text-gray-200" for="username">Job Title</label>
-                            <input id="job_title" name="job_title" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                            <input value="{{ $job->job_title }}" id="job_title" name="job_title" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
                         </div>
-            
+                        
+                        {{-- SALARY --}}
                         <div>
                             <label class="text-gray-700 dark:text-gray-200" for="emailAddress">Salary</label>
-                            <input id="salary" name="salary" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                            <input value="{{ $job->salary }}"id="salary" name="salary" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                        </div>
+
+                        {{-- JOB TIER --}}
+                        <div>
+                            <label class="text-gray-700 dark:text-gray-200" for="job_tier">Job Tier</label>
+                            <select name="job_tier" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                                <option value="Godlike" {{ $job->job_tier == 'Godlike' ? 'selected' : '' }}>Godlike</option>
+                                <option value="Legendary" {{ $job->job_tier == 'Legendary' ? 'selected' : '' }}>Legendary</option>
+                                <option value="Epic" {{ $job->job_tier == 'Epic' ? 'selected' : '' }}>Epic</option>  
+                                <option value="Kinda mid" {{ $job->job_tier == 'Kinda mid' ? 'selected' : '' }}>Kinda mid</option>
+                                <option value="Uncommon" {{ $job->job_tier == 'Uncommon' ? 'selected' : '' }}>Uncommon</option>
+                                <option value="Common" {{ $job->job_tier == 'Common' ? 'selected' : '' }}>Common</option>
+                            </select>
                         </div>
             
+                        {{-- DESCRIPTION --}}
                         <div>
                             <label for="description" class="block text-sm text-gray-500 dark:text-gray-300">Description</label>
-                            <textarea id="description" name="description" placeholder="Write details..." class="block  mt-2 w-full  placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-200 bg-white px-4 h-32 py-2.5 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"></textarea>
+                            <textarea id="description" name="description" placeholder="Write details..." class="block  mt-2 w-full  placeholder-gray-400/70 dark:placeholder-gray-500 rounded-lg border border-gray-200 bg-white px-4 h-32 py-2.5 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300">{{ $job->description }}</textarea>
                         </div>
                     </div>
             
                     <div class="flex justify-end mt-6">
-                        <button type="submit" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Add</button>
+                        <button type="submit" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Update</button>
                     </div>
     
                 </form>
