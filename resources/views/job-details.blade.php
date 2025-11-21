@@ -40,7 +40,7 @@
                         <div class="flex items-center mt-6">
                             <div class="mx-4">
                                 <h1 class="text-xl text-gray-700 dark:text-gray-200">Average Salary</h1>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">{{ $job['salary'] }}</p>
+                                <p class="text-1xl text-gray-200 dark:text-gray-200">{{ $job['salary'] }}</p>
                             </div>
                         </div>
 

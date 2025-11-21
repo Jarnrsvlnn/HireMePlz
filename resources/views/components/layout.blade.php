@@ -32,7 +32,7 @@
                         <div class="flex items-center gap-10">
                             {{-- LOGO --}}
                             <div class="shrink-0">
-                                <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="size-8" />
+                                <x-hmp-logo class="w-12 h-12 text-yellow-400"/>
                             </div>
 
                             {{-- TABS --}}
