@@ -19,7 +19,7 @@ class JobController extends Controller
     public function index(GetAllJobs $getAllJobs)
     {
         $jobs = $getAllJobs();
-        return view('list-jobs', compact('jobs'));
+        return view('jobs.index', compact('jobs'));
     }
 
     /**
@@ -28,7 +28,7 @@ class JobController extends Controller
     public function create(GetAllJobs $getAllJobs)
     {
         $jobs = $getAllJobs();
-        return view('create-job', compact('jobs'));
+        return view('jobs.create', compact('jobs'));
     }
 
     /**
@@ -45,7 +45,7 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        return view('job-details', compact('job'));
+        return view('jobs.show', compact('job'));
     }
 
     /**
@@ -61,7 +61,7 @@ class JobController extends Controller
      * Update the specified resource in storage.
      */
     public function update(UpdateJobRequest $request, Job $job, UpdateJob $updateJob)
-    {
+    {   
         $updateJob($job, $request->validated());
         return redirect()->route('jobs.show', $job)->with('success', 'Updated!');
     }

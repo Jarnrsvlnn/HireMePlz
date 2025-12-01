@@ -21,7 +21,9 @@ class JobFactory extends Factory
             'job_title' => fake()->jobTitle(),
             'salary' => '$67',
             'description' => fake()->paragraph(),
-            'job_tier' => fake()->randomElement(['Common', 'Uncommon', 'Kinda mid', 'Epic', 'Legendary', 'Godlike'])
+            'job_tier' => fake()->randomElement(['Common', 'Uncommon', 'Kinda mid', 'Epic', 'Legendary', 'Godlike']),
+            'created_at' => now(),
+            'updated_at' => now()
         ];
     }
 }

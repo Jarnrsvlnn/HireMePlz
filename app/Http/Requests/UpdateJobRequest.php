@@ -22,10 +22,10 @@ class UpdateJobRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'job_title' => 'sometimes|string|max:255',
-            'salary' => 'sometimes|string',
-            'description' => 'sometimes|string|max:100',
-            'job_tier' => 'sometimes|nullable|string|in:Godlike,Legendary,Epic,Kinda mid,Uncommon,Common'
+            'job_title' => 'string|max:255',
+            'salary' => 'string',
+            'description' => 'string|max:100',
+            'job_tier' => 'nullable|string|in:Godlike,Legendary,Epic,Kinda mid,Uncommon,Common'
         ];
     }
 }

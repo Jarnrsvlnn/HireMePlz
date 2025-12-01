@@ -8,7 +8,7 @@ Route::get('/', function () {
 });
 
 Route::get('/jobMenu', function () {
-    return view('job-menu');
+    return view('jobs.menu');
 });
 
 Route::resource('jobs', JobController::class);
@@ -16,3 +16,4 @@ Route::resource('jobs', JobController::class);
 Route::get('/almanac', function () {
     return view('almanac');
 });
+
