@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\User;
+use App\Models\Job;
 
 return new class extends Migration
 {
@@ -12,11 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jobs', function (Blueprint $table) {
+        Schema::create('job_user', function (Blueprint $table) {
             $table->id();
-            $table->string('job_title');
-            $table->string('salary');
-            $table->text('description');
+            $table->foreignIdFor(User::class, 'user_id')->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Job::class, 'job_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jobs');
+        Schema::dropIfExists('job_user');
     }
 };

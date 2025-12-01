@@ -15,4 +15,9 @@ class Job extends Model
         'description',
         'job_tier'
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
