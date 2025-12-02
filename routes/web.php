@@ -4,7 +4,7 @@ use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    return view('home.index');
 });
 
 Route::get('/jobMenu', function () {
@@ -14,6 +14,6 @@ Route::get('/jobMenu', function () {
 Route::resource('jobs', JobController::class);
 
 Route::get('/almanac', function () {
-    return view('almanac');
+    return view('almanac.index');
 });
 
