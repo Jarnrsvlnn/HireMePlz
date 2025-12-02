@@ -1,4 +1,7 @@
 <x-layout>
+    <x-slot:title>
+        View Jobs
+    </x-slot:title>
     <div class="flex gap-10 flex-row mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <x-slot:header>
             Jobs / All
