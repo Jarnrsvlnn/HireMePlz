@@ -48,6 +48,8 @@
                     </div>
                 </div>
             @endforeach
+
+            {{ $jobs->links() }}
             <section class="flex justify-center items-center mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                 @if(session('success'))
                     <div class="flex w-full fixed max-w-sm overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">

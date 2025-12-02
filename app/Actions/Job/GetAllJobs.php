@@ -8,7 +8,7 @@ class GetAllJobs {
 
     public function __invoke()
     {
-        return Job::select('id', 'job_title', 'salary', 'description', 'job_tier')->get();
+        return Job::select('id', 'job_title', 'salary', 'description', 'job_tier')->latest()->paginate(6);
     }
     
 }
