@@ -27,8 +27,7 @@ class JobController extends Controller
      */
     public function create(GetAllJobs $getAllJobs)
     {
-        $jobs = $getAllJobs();
-        return view('jobs.create', compact('jobs'));
+        //
     }
 
     /**
@@ -37,7 +36,7 @@ class JobController extends Controller
     public function store(CreateJobRequest $request, CreateJob $createJob)
     {
         $createJob($request->validated());
-        return redirect()->route('jobs.create')->with('success', 'Job created successfully! ');
+        return redirect()->route('jobs.index')->with('success', 'Job created successfully! ');
     }
 
     /**

@@ -2,9 +2,9 @@ import './bootstrap';
 import '@tailwindplus/elements';
 
 const backButton = document.querySelector('#back-button');
-const editDialog = document.querySelector('#edit-dialog');
+const editDialog = document.querySelector('dialog');
 const openEditDialog = document.querySelector('#open-dialog');
-const closeEditDialog = document.querySelector('#edit-dialog #close-dialog');
+const closeEditDialog = document.querySelector('dialog #close-dialog');
 
 if (backButton) { backButton.addEventListener('click', () => history.back()); }
 

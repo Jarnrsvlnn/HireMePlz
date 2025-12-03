@@ -8,15 +8,21 @@
         </x-slot:header>
     
         {{-- BACK BUTTON --}}
-        <button id="back-button" class="flex items-center sticky top-10 px-4 py-2 h-10 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+        <x-button>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
             </svg>
-                
-            <span class="mx-1">Previous Page</span>
-        </button>
+            <span class="mx-1">Edit</span>
+        </x-button>
+
+        <x-button id='open-dialog'>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            <span class="mx-1">Create</span>
+        </x-button>
     
-        <section class="grid grid-cols-2 gap-8">
+        <section class="grid grid-cols-2 gap-8">    
             @foreach ($jobs as $job)
                 <div class="flex max-w-md overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
                     <div class="w-1/3 bg-cover" style="background-image: url('https://images.unsplash.com/photo-1494726161322-5360d4d0eeae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80')"></div>
@@ -71,4 +77,7 @@
         </section>
 
     </div>
+
+    {{-- CREATE FORM --}}
+    <x-dialog-modal formType='create'></x-dialog-modal>
 </x-layout> 

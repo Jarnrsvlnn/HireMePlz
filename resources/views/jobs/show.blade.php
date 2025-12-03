@@ -9,19 +9,19 @@
         {{-- BUTTONS SECTION --}}
 
         <section id="job-details-btns-section" class="flex flex-row justify-between">
-            <button id="back-button" class="flex items-center px-4 py-2 h-10 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+            <x-button id="back-button">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
                 </svg>
                 
-                <span class="mx-1">Previous Page</span>
-            </button>
-            <button id="open-dialog" class="flex w-25 cursor-pointer items-center px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                <span class="mx-1">Previous</span>
+            </x-button>
+            <x-button id="open-dialog">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                 </svg>
                 <span class="mx-1">Edit</span>
-            </button>
+            </x-button>
         </section>
 
 
@@ -54,84 +54,8 @@
             </div>
         </section>
 
-
-
     </div>
 
-    <dialog id="edit-dialog" class="p-0 rounded-lg w-full max-w-lg backdrop:bg-black/50" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-
-        <div class="px-6 py-5 bg-white dark:bg-gray-900 rounded-lg shadow-xl">
-
-            <h2 class="text-lg font-semibold text-gray-700 dark:text-white">
-                Input Job Details
-            </h2>
-
-            <form action="{{ route('jobs.update', $job) }}" method="POST" class="mt-4">
-
-                @csrf
-                @method('PUT')
-
-                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-    
-                    {{-- JOB TITLE --}}
-
-                    <div>
-                        <label class="text-gray-700 dark:text-gray-200">Job Title</label>
-                        <input value="{{ $job->job_title }}" name="job_title" type="text"
-                            class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
-                    </div>
-
-                    {{-- SALARY --}}
-
-                    <div>
-                        <label class="text-gray-700 dark:text-gray-200">Salary</label>
-                        <input value="{{ $job->salary }}" name="salary" type="text"
-                            class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
-                    </div>
-
-                    {{-- JOB TIER --}}
-
-                    <div>
-                        <label class="text-gray-700 dark:text-gray-200">Job Tier</label>
-                        <select name="job_tier"
-                            class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
-                            <option value="Godlike" {{ $job->job_tier == 'Godlike' ? 'selected' : '' }}>Godlike</option>
-                            <option value="Legendary" {{ $job->job_tier == 'Legendary' ? 'selected' : '' }}>Legendary</option>
-                            <option value="Epic" {{ $job->job_tier == 'Epic' ? 'selected' : '' }}>Epic</option>
-                            <option value="Kinda mid" {{ $job->job_tier == 'Kinda mid' ? 'selected' : '' }}>Kinda mid</option>
-                            <option value="Uncommon" {{ $job->job_tier == 'Uncommon' ? 'selected' : '' }}>Uncommon</option>
-                            <option value="Common" {{ $job->job_tier == 'Common' ? 'selected' : '' }}>Common</option>
-                        </select>
-                    </div>
-
-                    {{-- DESCRIPTION --}}
-
-                    <div class="sm:col-span-2">
-                        <label class="text-gray-700 dark:text-gray-200">Description</label>
-                        <textarea name="description" class="block w-full h-32 mt-2 rounded-lg border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300">{{ $job->description }}</textarea>
-                    </div>
-                </div>
-
-                {{-- BUTTONS --}}
-
-                <div class="mt-5 flex justify-end gap-3">
-                    <button id="close-dialog" type="button" formmethod="dialog"
-                        class="px-4 py-2 border rounded-md text-white dark:border-gray-700">
-                        Close
-                    </button>
-
-                    <button type="submit"
-                        class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-500">
-                        Update
-                    </button>
-
-                    <button type="submit" onclick="console.log('Submitting!')">Submit</button>
-                </div>
-
-            </form>
-
-        </div>
-
-    </dialog>
-    
+    {{-- UPDATE FORM --}}
+    <x-dialog-modal formType='update' :job='$job'></x-dialog-modal>
 </x-layout>
