@@ -49,7 +49,8 @@
                         class="px-4 py-2 border rounded-md text-white dark:border-gray-700">
                         Close
                     </button>
-                    <x-button type="submit">
+                    <x-button buttonType='button' type="submit"
+                        class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-500">
                         Update
                     </x-button>
                 </div>
@@ -105,7 +106,7 @@
                         class="px-4 py-2 border rounded-md text-white dark:border-gray-700">
                         Close
                     </button>
-                    <x-button type="submit">
+                    <x-button buttonType='button' type="submit">
                         Add
                     </x-button>
                 </div>
