@@ -35,15 +35,15 @@
     
                     <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
                         <x-tier-coloring type="p" :tier="$job['job_tier']">
-                            Tier: {{ $job['job_tier'] }}
+                            Tier: {{ $job->job_tier }}
                         </x-tier-coloring>
                         <h2 class="block mt-4 text-2xl font-semibold text-gray-800 dark:text-white">What does these <em>employed</em> beings even do?!</h2>
-                        <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">{{ $job['description'] }}</p> 
+                        <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">{{ $job->description }}</p> 
         
                         <div class="flex items-center mt-6">
                             <div class="mx-4">
                                 <h1 class="text-xl text-gray-700 dark:text-gray-200">Average Salary</h1>
-                                <p class="text-1xl text-gray-200 dark:text-gray-200">{{ $job['salary'] }}</p>
+                                <p class="text-1xl text-gray-200 dark:text-gray-200">{{ $job->salary }}</p>
                             </div>
                         </div>
 

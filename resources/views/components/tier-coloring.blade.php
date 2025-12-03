@@ -9,6 +9,8 @@
     <{{ $type == 'p' ? 'p' : ($type == 'option' ? 'option' : 'h1') }} class="text-sm text-green-500 uppercase"><strong>{{ $slot }}</strong></p>
 @elseif ($tier =='Uncommon')
     <{{ $type == 'p' ? 'p' : ($type == 'option' ? 'option' : 'h1') }} class="text-sm text-blue-500 uppercase"><strong>{{ $slot }}</strong></p>
+@elseif ($tier =='Kinda mid')
+    <{{ $type == 'p' ? 'p' : ($type == 'option' ? 'option' : 'h1') }} class="text-sm text-pink-500 uppercase"><strong>{{ $slot }}</strong></p>
 @elseif ($tier =='Epic')
     <{{ $type == 'p' ? 'p' : ($type == 'option' ? 'option' : 'h1') }} class="text-sm text-purple-700 uppercase"><strong>{{ $slot }}</strong></p>
 @elseif ($tier =='Legendary')
