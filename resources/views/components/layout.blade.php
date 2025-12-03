@@ -32,7 +32,9 @@
                         <div class="flex items-center gap-10">
                             {{-- LOGO --}}
                             <div class="shrink-0">
-                                <x-hmp-logo class="w-12 h-12 text-yellow-400"/>
+                                <a href="/">
+                                    <x-hmp-logo class="w-12 h-12"/>
+                                </a>    
                             </div>
 
                             {{-- TABS --}}

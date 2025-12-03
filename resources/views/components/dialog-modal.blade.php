@@ -1,4 +1,5 @@
 @props(['formType' => 'create','job'])
+@aware(['errors'])
 
 {{-- UPDATE FORM --}}
 @if ($formType == 'update')
@@ -72,19 +73,23 @@
                     {{-- JOB TITLE --}}
                     <div>
                         <label class="text-gray-700 dark:text-gray-200">Job Title</label>
-                        <input name="job_title" type="text" placeholder="ex. Software Engineer"
+                        <input id="job_title" name="job_title" type="text" placeholder="ex. Software Engineer" 
                             class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
+                        
+                        @error('job_title')
+                            <p>{{ $message }}</p>
+                        @enderror
                     </div>
                     {{-- SALARY --}}
                     <div>
                         <label class="text-gray-700 dark:text-gray-200">Salary</label>
-                        <input name="salary" type="text" placeholder="ex. $67"
+                        <input name="salary" type="text" placeholder="ex. $67" required
                             class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
                     </div>
                     {{-- JOB TIER --}}
                     <div>
                         <label class="text-gray-700 dark:text-gray-200">Job Tier</label>
-                        <select name="job_tier"
+                        <select name="job_tier" required
                             class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
                             <option value="Godlike">Godlike</option>
                             <option value="Legendary">Legendary</option>
@@ -97,7 +102,7 @@
                     {{-- DESCRIPTION --}}
                     <div class="sm:col-span-2">
                         <label class="text-gray-700 dark:text-gray-200">Description</label>
-                        <textarea name="description" placeholder="Write details..." class="block w-full h-32 mt-2 rounded-lg border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300"></textarea>
+                        <textarea required name="description" placeholder="Write details..." class="block w-full h-32 mt-2 rounded-lg border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300"></textarea>
                     </div>
                 </div>
                 {{-- BUTTONS --}}
@@ -113,4 +118,5 @@
             </form>
         </div>
     </dialog>
+
 @endif

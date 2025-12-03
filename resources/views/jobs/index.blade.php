@@ -79,5 +79,5 @@
     </div>
 
     {{-- CREATE FORM --}}
-    <x-dialog-modal formType='create'></x-dialog-modal>
+    <x-dialog-modal :errors="$errors" formType='create'></x-dialog-modal>
 </x-layout> 
