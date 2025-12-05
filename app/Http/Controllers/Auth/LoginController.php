@@ -2,31 +2,31 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Actions\Auth\RegisterUser;
-use App\Http\Requests\Auth\RegisterUserRequest;
+use App\Actions\Auth\LoginUser;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginUserRequest;
 
-class RegisterController extends Controller
+class LoginController extends Controller
 {
 
     /**
      * Show the register form
      */
-    public function showRegister()
+    public function showLogin()
     {
-        return view('auth.register');
+        return view('auth.login');
     }
 
     /**
      * Register the user
      */
-    public function register(RegisterUserRequest $request, RegisterUser $registerUser)
+    public function login(LoginUserRequest $request, LoginUser $loginUser)
     {
         // validate input then pass the validated data to the auth action to store the user
 
-        $user = $registerUser($request->validated());
-
+        $user = $loginUser($request->validated());
+        
         // login the created user
 
         Auth::login($user);
