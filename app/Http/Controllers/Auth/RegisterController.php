@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use App\Actions\Auth\RegisterUser;
 use App\Http\Requests\RegisterUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
-class AuthController extends Controller
+class RegisterController extends Controller
 {
 
     /**
@@ -33,7 +34,7 @@ class AuthController extends Controller
 
         // redirect to dashboard (or home)
 
-        return redirect()->route('dashboard');
+        return redirect()->route('home.index');
 
     }
 }
