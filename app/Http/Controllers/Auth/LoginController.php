@@ -21,7 +21,7 @@ class LoginController extends Controller
     /**
      * Register the user
      */
-    public function login(LoginUserRequest $request, LoginUser $loginUser)
+    public function loginUser(LoginUserRequest $request, LoginUser $loginUser)
     {
         // validate input then pass the validated data to the auth action to store the user
 
@@ -35,5 +35,14 @@ class LoginController extends Controller
 
         return redirect()->route('home.index');
 
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return redirect()->route('login.showLogin');
     }
 }
