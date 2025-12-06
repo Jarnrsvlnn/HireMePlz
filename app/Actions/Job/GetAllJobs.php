@@ -1,14 +1,17 @@
-<?php 
+<?php
 
 namespace App\Actions\Job;
 
-use App\Models\Job;
+use Illuminate\Http\Request;
 
 class GetAllJobs {
 
-    public function __invoke()
+    public function __invoke(Request $request)
     {
-        return Job::select('id', 'job_title', 'salary', 'description', 'job_tier')->latest()->paginate(6);
+        return $request->user()
+            ->jobs()
+            ->select('jobs.id', 'jobs.job_title', 'jobs.salary', 'jobs.description', 'jobs.job_tier')
+            ->latest()
+            ->paginate(6);
     }
-    
 }

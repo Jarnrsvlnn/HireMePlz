@@ -21,21 +21,22 @@ class LoginController extends Controller
     /**
      * Register the user
      */
-    public function loginUser(LoginUserRequest $request, LoginUser $loginUser)
+    public function loginUser(LoginUserRequest $request)
     {
-        // validate input then pass the validated data to the auth action to store the user
+        $credentials = $request->validated();
 
-        $user = $loginUser($request->validated());
-        
-        // login the created user 
+        if (!Auth::attempt($credentials)) {
+            // Invalid credentials
+            return back()
+                ->withErrors(['email' => 'Invalid credentials'])
+                ->withInput();
+        }
 
-        Auth::login($user);
-
-        // redirect to dashboard (or home)
+        // Regenerate session to prevent fixation
+        $request->session()->regenerate();
 
         return redirect()->route('home.index');
-
-    }
+    }   
 
     public function logout()
     {
