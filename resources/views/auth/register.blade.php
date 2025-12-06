@@ -9,14 +9,14 @@
     </div>
   
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form action="{{ route('register') }}" method="POST" class="space-y-6">
+      <form action="{{ route('register.registerUser') }}" method="POST" class="space-y-6">
 
         @csrf
       
         <div>
           <label for="email" class="block text-sm/6 font-medium text-gray-100">Username</label>
           <div class="mt-2">
-            <input id="username" type="text" name="username" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
+            <input id="name" type="text" name="name" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
           </div>
         </div>
 

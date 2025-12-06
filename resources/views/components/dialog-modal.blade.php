@@ -75,10 +75,6 @@
                         <label class="text-gray-700 dark:text-gray-200">Job Title</label>
                         <input id="job_title" name="job_title" type="text" placeholder="ex. Software Engineer" 
                             class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
-                        
-                        @error('job_title')
-                            <p>{{ $message }}</p>
-                        @enderror
                     </div>
                     {{-- SALARY --}}
                     <div>

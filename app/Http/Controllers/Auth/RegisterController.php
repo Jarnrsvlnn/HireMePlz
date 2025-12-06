@@ -21,19 +21,13 @@ class RegisterController extends Controller
     /**
      * Register the user
      */
-    public function register(RegisterUserRequest $request, RegisterUser $registerUser)
+    public function registerUser(RegisterUserRequest $request, RegisterUser $registerUser)
     {
-        // validate input then pass the validated data to the auth action to store the user
 
         $user = $registerUser($request->validated());
 
-        // login the created user
-
         Auth::login($user);
 
-        // redirect to dashboard (or home)
-
         return redirect()->route('home.index');
-
     }
 }
