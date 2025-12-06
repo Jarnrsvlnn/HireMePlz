@@ -27,7 +27,7 @@ class LoginController extends Controller
 
         $user = $loginUser($request->validated());
         
-        // login the created user
+        // login the created user 
 
         Auth::login($user);
 
