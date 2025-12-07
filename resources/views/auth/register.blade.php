@@ -55,7 +55,7 @@
   
       <p class="mt-10 text-center text-sm/6 text-gray-400">
         Already have an account?
-        <a href="{{ route('login.showLogin') }}" class="font-semibold text-indigo-400 hover:text-indigo-300">Login</a>
+        <a href="{{ route('login') }}" class="font-semibold text-indigo-400 hover:text-indigo-300">Login</a>
       </p>
     </div>
   </div>
