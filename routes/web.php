@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
 
 Route::middleware(['auth'])->group(function() {
+    // NAV ROUTES
     Route::view('/', 'home.index')->name('home.index');
     Route::resource('jobs', JobController::class);
     Route::view('/almanac', 'almanac.index');

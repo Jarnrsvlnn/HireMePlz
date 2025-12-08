@@ -22,7 +22,10 @@ class UpdateProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'first_name' => 'min:2|max:20',
+            'last_name' => 'min:2|max:15',
+            'secondary_email' => 'min:4|max:30',
+            'phone_number' => 'min:10|max:15'
         ];
     }
 }
