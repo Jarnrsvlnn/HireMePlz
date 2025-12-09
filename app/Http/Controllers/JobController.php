@@ -35,7 +35,7 @@ class JobController extends Controller
      */
     public function store(CreateJobRequest $request, CreateJob $createJob)
     {
-        $createJob($request->validated());
+        $createJob($request->user(), $request->validated());
         return redirect()->route('jobs.index')->with('success', 'Job created successfully! ');
     }
 

@@ -2,11 +2,9 @@
 
 namespace App\Actions\Profile;
 
-use App\Models\User;
-
 class UpdateProfile {
 
-    public function __invoke(User $user, array $data)
+    public function __invoke($user, array $data)
     {
         return $user->update($data);
     }
