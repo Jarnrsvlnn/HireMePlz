@@ -2,57 +2,72 @@
     <x-slot:title>
         View Jobs
     </x-slot:title>
-    <div class="flex gap-10 flex-row mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div class="flex gap-10 flex-col mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <x-slot:header>
             Jobs / All
         </x-slot:header>
     
         {{-- EDIT BUTTON --}}
-        <x-button>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
-            </svg>
-            <span class="mx-1">Edit</span>
-        </x-button>
 
-
-        {{-- CREATE BUTTON --}}
-        <x-button id='open-dialog'>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
-            <span class="mx-1">Create</span>
-        </x-button>
+        <div class="flex flex-row justify-end gap-5">
+            <x-button>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                </svg>
+                <span class="mx-1">Edit</span>
+            </x-button>
     
-        <section class="grid grid-cols-2 gap-8">    
-            @foreach ($jobs as $job)
-                <div class="flex max-w-md overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-                    <div class="w-1/3 bg-cover" style="background-image: url('https://images.unsplash.com/photo-1494726161322-5360d4d0eeae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80')"></div>
-                
-                    <div class="w-2/3 p-4 md:p-4">
-                        <h1 class="text-xl font-bold text-gray-800 dark:text-white">{{ $job['job_title'] }}</h1>
-                
-                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{{ $job['description'] }}</p>
-                
-                        <div class="flex mt-2 item-center">
-                            <x-tier-coloring type="h1" :tier="$job['job_tier']">
-                                Tier: {{ $job['job_tier'] }}
-                            </x-tier-coloring>
-                        </div>
-                
-                        <div class="flex justify-between mt-3 item-center">
-                            <h1 class="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">{{ $job['salary'] }}</h1>
+    
+            {{-- CREATE BUTTON --}}
+            <x-button id='open-dialog'>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+                <span class="mx-1">Create</span>
+            </x-button>
+        </div>
 
-                            {{-- BUTTONS --}}
-                            <div class="flex flex-row gap-2">
-                                <form action="{{ route('jobs.destroy', $job) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform  rounded  bg-red-500 hover:bg-red-400 dark:hover:bg-red-400 focus:outline-none focus:bg-gray-700 dark:focus:bg-red-400">Remove</button>
-                                </form>
-                                <a href="{{ route('jobs.show', $job) }}" class="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">View</a>
+    
+        <section class="grid gap-5 md:grid-cols-2"> 
+            {{-- JOB CARDS --}}
+            @foreach ($jobs as $job)
+                <div class="flex w-full h-60 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+                    <div class="flex-1 bg-cover" style="background-image: url('https://images.unsplash.com/photo-1494726161322-5360d4d0eeae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80')"></div>
+                
+                    <div class="flex w-2/3 p-4 md:p-4 flex-col justify-between">
+
+                        <div class="flex-1">
+                            {{-- TITLE --}}
+                            <h1 class="mb-4 text-2xl font-bold text-gray-800 dark:text-white">{{ $job['job_title'] }}</h1>
+
+                            {{-- DESCRIPTION --}}
+                            <p class="mt-1 max-h-full overflow-auto wrap-break-word text-base text-left text-gray-600 dark:text-gray-400">{{ $job['description'] }}</p>
+                        </div>
+
+                        <div class="flex flex-1 flex-col justify-end">
+                            {{-- TIER --}}
+                            <div class="flex item-center mb-5">
+                                <x-tier-coloring type="h1" :tier="$job['job_tier']">
+                                    Tier: {{ $job['job_tier'] }}
+                                </x-tier-coloring>
+                            </div>
+                    
+                            <div class="flex justify-between item-center">
+                                {{-- SALARY --}}
+                                <h1 class="text-2xl font-bold text-gray-700 dark:text-gray-200 md:text-xl">{{ $job['salary'] }}</h1>
+
+                                {{-- BUTTONS --}}
+                                <div class="flex flex-row justify-between gap-3 w-50 h-12">
+                                    <form class="w-full flex-1" action="{{ route('jobs.destroy', $job) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="w-full h-full px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-300 transform  rounded  bg-red-500 hover:bg-red-400 dark:hover:bg-red-400 focus:outline-none focus:bg-gray-700 dark:focus:bg-red-400">Remove</button>
+                                    </form>
+                                    <a href="{{ route('jobs.show', $job) }}" class="flex justify-center items-center h-full text-center flex-1 w-full text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">View</a>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             @endforeach
