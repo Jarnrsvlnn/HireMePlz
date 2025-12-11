@@ -41,7 +41,7 @@
                     {{-- DESCRIPTION --}}
                     <div class="sm:col-span-2">
                         <label class="text-gray-700 dark:text-gray-200">Description</label>
-                        <textarea name="description" class="block w-full h-32 mt-2 rounded-lg border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300">{{ $job->description }}</textarea>
+                        <textarea name="description" class="block p-2 border w-full h-32 mt-2 rounded-lg border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300">{{ $job->description }}</textarea>
                     </div>
                 </div>
                 {{-- BUTTONS --}}
@@ -98,7 +98,7 @@
                     {{-- DESCRIPTION --}}
                     <div class="sm:col-span-2">
                         <label class="text-gray-700 dark:text-gray-200">Description</label>
-                        <textarea required name="description" placeholder="Write details..." class="block w-full h-32 mt-2 rounded-lg border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300"></textarea>
+                        <textarea required name="description" placeholder="Write details..." class="p-2 block border w-full h-32 mt-2 rounded-lg border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300"></textarea>
                     </div>
                 </div>
                 {{-- BUTTONS --}}
