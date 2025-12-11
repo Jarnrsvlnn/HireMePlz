@@ -18,9 +18,7 @@
               <input value="{{ old('email') }}" required id="email" type="email" name="email" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
             </div>
 
-            @error('email')
-              <p class="text-xs italic text-red-500 font-semibold">{{ $message }}</p>
-            @enderror
+            <x-form-error name="email"/>
           </div>
 
           <div>
@@ -34,20 +32,8 @@
               <input required id="password" type="password" name="password" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
             </div>
 
-            @error('password')
-              <p class="text-xs italic text-red-500 font-semibold">{{ $message }}</p>
-            @enderror
+            <x-form-error name="password"/>
           </div>
-
-          {{-- <div class="mt-10">
-            @if ($errors->any())
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li class="text-red-500 italic text-sm">{{ $error }}</li>
-                  @endforeach
-              </ul> 
-            @endif
-          </div> --}}
     
           <div>
             <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Login</button>

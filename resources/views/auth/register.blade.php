@@ -19,9 +19,7 @@
             <input id="name" type="text" name="name" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
           </div>
 
-          @error('name')
-            <p class="text-xs italic text-red-500 font-semibold">{{ $message }}</p>
-          @enderror
+          <x-form-error name="name"/>
         </div>
 
         <div>
@@ -30,9 +28,7 @@
             <input id="email" type="email" name="email" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
           </div>
 
-          @error('email')
-            <p class="text-xs italic text-red-500 font-semibold">{{ $message }}</p>
-          @enderror
+          <x-form-error name="email"/>
         </div>
 
         <div>
@@ -43,9 +39,7 @@
             <input id="password" type="password" name="password" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
           </div>
 
-          @error('password')
-            <p class="text-xs italic text-red-500 font-semibold">{{ $message }}</p>
-          @enderror
+          <x-form-error name="password"/>
         </div>
   
         <div>

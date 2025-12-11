@@ -20,39 +20,31 @@
             <div class="grid grid-cols-1 gap-6 mt-5 sm:grid-cols-2">
                 <div>
                     <label class="text-gray-700 dark:text-gray-200" for="first_name">First name</label>
-                    <input value="{{ auth()->user()->first_name }}" name="first_name" id="first_name" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                    <x-form-input value="{{ auth()->user()->first_name }}" name="first_name" id="first_name" type="text"/>
                 </div>
 
-                @error('first_name')
-                    <p class="text-xs italic text-red-500 font-semibold">{{ $message }}</p>
-                @enderror
+                <x-form-error name="first_name"/>
 
                 <div>
                     <label class="text-gray-700 dark:text-gray-200" for="last_name">Last name</label>
-                    <input value="{{ auth()->user()->last_name }}" name="last_name" id="last_name" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                    <x-form-input value="{{ auth()->user()->last_name }}" name="last_name" id="last_name" type="text"/>
                 </div>
 
-                @error('last_name')
-                    <p class="text-xs italic text-red-500 font-semibold">{{ $message }}</p>
-                @enderror
+                <x-form-error name="last_name"/>
     
                 <div>
                     <label class="text-gray-700 dark:text-gray-200" for="secondary_email">Secondary Email</label>
-                    <input value="{{ auth()->user()->secondary_email }}" name="secondary_email" id="secondary_email" type="email" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                    <x-form-input value="{{ auth()->user()->secondary_email }}" name="secondary_email" id="secondary_email" type="email"/>
                 </div>
 
-                @error('secondary_email')
-                    <p class="text-xs italic text-red-500 font-semibold">{{ $message }}</p>
-                @enderror
+                <x-form-error name="secondary_email"/>
 
                 <div>
                     <label class="text-gray-700 dark:text-gray-200" for="phone_number">Phone</label>
-                    <input value="{{ auth()->user()->phone_number }}" name="phone_number" id="phone_number" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                    <x-form-input value="{{ auth()->user()->phone_number }}" name="phone_number" id="phone_number" type="text"/>
                 </div>
                 
-                @error('phone_number')
-                    <p class="text-xs italic text-red-500 font-semibold">{{ $message }}</p>
-                @enderror
+                <x-form-error name="phone_number"/>
     
             </div>
     
