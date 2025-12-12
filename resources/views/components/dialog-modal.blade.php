@@ -15,7 +15,7 @@
                 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     {{-- JOB TITLE --}}
                     <div>
-                        <label class="text-gray-700 dark:text-gray-200">Job Title</label>
+                        <x-form-label>Job Title</x-form-label>
                         <input value="{{ $job->job_title }}" name="job_title" type="text"
                             class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
                         
@@ -23,7 +23,7 @@
                     </div>
                     {{-- SALARY --}}
                     <div>
-                        <label class="text-gray-700 dark:text-gray-200">Salary</label>
+                        <x-form-label>Salary</x-form-label>
                         <input value="{{ $job->salary }}" name="salary" type="text"
                             class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
                         
@@ -31,7 +31,7 @@
                     </div>
                     {{-- JOB TIER --}}
                     <div>
-                        <label class="text-gray-700 dark:text-gray-200">Job Tier</label>
+                        <x-form-label>Job Tier</x-form-label>
                         <select name="job_tier"
                             class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
                             <option value="Godlike" {{ $job->job_tier == 'Godlike' ? 'selected' : '' }}>Godlike</option>
@@ -46,7 +46,7 @@
                     </div>
                     {{-- DESCRIPTION --}}
                     <div class="sm:col-span-2">
-                        <label class="text-gray-700 dark:text-gray-200">Description</label>
+                        <x-form-label>Description</x-form-label>
                         <textarea name="description" class="block p-2 border w-full h-32 mt-2 rounded-lg border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300">{{ $job->description }}</textarea>
                         
                         <x-form-error name="description"/>
@@ -80,7 +80,7 @@
                 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     {{-- JOB TITLE --}}
                     <div>
-                        <label class="text-gray-700 dark:text-gray-200">Job Title</label>
+                        <x-form-label>Job Title</x-form-label>
                         <input id="job_title" name="job_title" type="text" placeholder="ex. Software Engineer" 
                             class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
                         
@@ -88,7 +88,7 @@
                     </div>
                     {{-- SALARY --}}
                     <div>
-                        <label class="text-gray-700 dark:text-gray-200">Salary</label>
+                        <x-form-label>Salary</x-form-label>
                         <input name="salary" type="text" placeholder="ex. $67" required
                             class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
                     
@@ -96,7 +96,7 @@
                     </div>
                     {{-- JOB TIER --}}
                     <div>
-                        <label class="text-gray-700 dark:text-gray-200">Job Tier</label>
+                        <x-form-label>Job Tier</x-form-label>
                         <select name="job_tier" required
                             class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
                             <option value="Godlike">Godlike</option>
@@ -111,7 +111,7 @@
                     </div>
                     {{-- DESCRIPTION --}}
                     <div class="sm:col-span-2">
-                        <label class="text-gray-700 dark:text-gray-200">Description</label>
+                        <x-form-label>Description</x-form-label>
                         <textarea required name="description" placeholder="Write details..." class="p-2 block border w-full h-32 mt-2 rounded-lg border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300"></textarea>
                             
                         <x-form-error name="description"/>
