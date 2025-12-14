@@ -6,6 +6,9 @@
         <x-slot:header>
             Home
         </x-slot:header>
-        <h1>Welcome, {{ auth()->user()->name }}</h1>
+        @auth
+            <h1>Welcome, {{ auth()->user()->name }}</h1>
+        @endauth
+        
     </div>
 </x-layout>

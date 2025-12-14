@@ -6,10 +6,12 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
 
+Route::view('/', 'home.index')->name('home.index');
+Route::resource('jobs', JobController::class)->only(['index', 'show']);
+
 Route::middleware(['auth'])->group(function() {
     // NAV ROUTES
-    Route::view('/', 'home.index')->name('home.index');
-    Route::resource('jobs', JobController::class);
+    Route::resource('jobs', JobController::class)->except(['index', 'show']);
     Route::view('/almanac', 'almanac.index');
 
     // PROFILE ROUTES

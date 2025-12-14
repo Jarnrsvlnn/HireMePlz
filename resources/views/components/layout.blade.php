@@ -40,7 +40,9 @@
                             {{-- TABS --}}
                             <div class="flex overflow-x-auto whitespace-nowrap">
                                 <x-tabLinks href="/" :active="request()->is('/')"> Home </x-tabLinks>
-                                <x-tabLinks href="/jobs" :active="request()->is('jobs')"> Jobs </x-tabLinks>
+                                @auth
+                                    <x-tabLinks href="/jobs" :active="request()->is('jobs')"> Jobs </x-tabLinks>    
+                                @endauth  
                                 <x-tabLinks href="/almanac" :active="request()->is('almanac')"> Almanac </x-tabLinks>
                             </div>
                         </div>
@@ -65,14 +67,20 @@
                                     <span class="sr-only">Open user menu</span>
                                     <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-8 rounded-full outline -outline-offset-1 outline-white/10" />
                                     </button>
-                    
-                                    <el-menu anchor="bottom end" popover class="w-48 origin-top-right rounded-md bg-gray-800 py-1 outline-1 -outline-offset-1 outline-white/10 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
-                                    <a href="{{ route('profile.index') }}" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Profile</a>
+                                    
 
-                                    <form action="{{ route('logout') }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Logout</button>
-                                    </form>
+                                    <el-menu anchor="bottom end" popover class="w-48 origin-top-right rounded-md bg-gray-800 py-1 outline-1 -outline-offset-1 outline-white/10 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
+                                        @auth
+                                            <a href="{{ route('profile.index') }}" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Profile</a>
+
+                                            <form action="{{ route('logout') }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Logout</button>
+                                            </form>
+                                        @endauth
+                                        @guest
+                                            <a href="{{ route('register.showRegister') }}" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Sign up</a>
+                                        @endguest
 
                                     </el-menu>  
                                 </el-dropdown>
