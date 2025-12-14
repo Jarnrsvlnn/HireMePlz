@@ -10,6 +10,7 @@ use App\Http\Requests\CreateJobRequest;
 use App\Http\Requests\UpdateJobRequest;
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class JobController extends Controller
 {
@@ -61,6 +62,10 @@ class JobController extends Controller
      */
     public function update(UpdateJobRequest $request, Job $job, UpdateJob $updateJob)
     {   
+        if (Gate::denies('edit-job', $job)) {
+            return redirect()->route('jobs.index');
+        }
+        
         $updateJob($job, $request->validated());
         return redirect()->route('jobs.show', $job)->with('success', 'Updated!');
     }

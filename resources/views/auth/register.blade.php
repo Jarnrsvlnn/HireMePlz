@@ -13,6 +13,7 @@
 
         @csrf
       
+        {{-- USERNAME --}}
         <div>
           <label for="name" class="block text-sm/6 font-medium text-gray-100">Username</label>
           <div class="mt-2">
@@ -22,6 +23,7 @@
           <x-form-error name="name"/>
         </div>
 
+        {{-- EMAIL --}}
         <div>
           <label for="email" class="block text-sm/6 font-medium text-gray-100">Email address</label>
           <div class="mt-2">
@@ -31,6 +33,7 @@
           <x-form-error name="email"/>
         </div>
 
+        {{-- PASSWORD --}}
         <div>
           <div class="flex items-center justify-between">
             <label for="password" class="block text-sm/6 font-medium text-gray-100">Password</label>
@@ -40,6 +43,18 @@
           </div>
 
           <x-form-error name="password"/>
+        </div>
+
+        {{-- CONFIRM PASSWORD --}}
+        <div>
+          <div class="flex items-center justify-between">
+            <label for="password_confirmation" class="block text-sm/6 font-medium text-gray-100">Confirm Password</label>
+          </div>
+          <div class="mt-2">
+            <input id="password_confirmation" type="password" name="password_confirmation" required class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
+          </div>
+
+          <x-form-error name="password_confirmation"/>
         </div>
   
         <div>

@@ -6,6 +6,7 @@ use App\Actions\Auth\LoginUser;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginUserRequest;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -25,11 +26,8 @@ class LoginController extends Controller
     {
         $credentials = $request->validated();
 
-        if (!Auth::attempt($credentials)) {
-            // Invalid credentials
-            return back()
-                ->withErrors(['email' => 'Invalid credentials'])
-                ->withInput();
+        if (! Auth::attempt($credentials, true)) {
+            throw ValidationException::withMessages(['email' => 'Invalid Credentials']);
         }
 
         // Regenerate session to prevent fixation
