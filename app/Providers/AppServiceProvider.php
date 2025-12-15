@@ -22,10 +22,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('edit-job', function(User $user, Job $job) {
+        Gate::define('manage-job', function(User $currentUser, Job $job) {
             return $job->users()
-                    ->where('users.id', $user->id)
+                    ->where('users.id', $currentUser->id)
                     ->exists();
-        });
+    });
     }
 }

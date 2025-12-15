@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Gate;
 
 class JobController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(Job::class, 'job');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -62,10 +67,6 @@ class JobController extends Controller
      */
     public function update(UpdateJobRequest $request, Job $job, UpdateJob $updateJob)
     {   
-        if (Gate::denies('edit-job', $job)) {
-            return redirect()->route('jobs.index');
-        }
-        
         $updateJob($job, $request->validated());
         return redirect()->route('jobs.show', $job)->with('success', 'Updated!');
     }
