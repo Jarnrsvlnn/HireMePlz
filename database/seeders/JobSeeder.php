@@ -13,6 +13,10 @@ class JobSeeder extends Seeder
      */
     public function run(): void
     {
-        Job::factory()->create();
+        $jobs = Job::factory()->count(10)->make();
+
+        $validatedJobs = $jobs->filter(fn($job) => !empty($job->job_title));
+
+        Job::factory()->create($validatedJobs);
     }
 }

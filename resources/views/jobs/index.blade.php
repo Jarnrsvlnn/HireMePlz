@@ -39,23 +39,23 @@
 
                             <div class="flex-1">
                                 {{-- TITLE --}}
-                                <h1 class="mb-4 text-2xl font-bold text-gray-800 dark:text-white">{{ $job['job_title'] }}</h1>
+                                <h1 class="mb-4 text-2xl font-bold text-gray-800 dark:text-white">{{ $job['job_title'] ?? 'Unknown Job' }}</h1>
 
                                 {{-- DESCRIPTION --}}
-                                <p class="mt-1 max-h-full overflow-auto wrap-break-word text-base md:text-sm text-left text-gray-600 dark:text-gray-400">{{ $job['description'] }}</p>
+                                <p class="mt-1 max-h-full overflow-auto wrap-break-word text-base md:text-sm text-left text-gray-600 dark:text-gray-400">{{ $job['description'] ?? 'No description' }}</p>
                             </div>
 
                             <div class="flex flex-1 flex-col justify-end">
                                 {{-- TIER --}}
                                 <div class="flex item-center mb-5">
                                     <x-tier-coloring type="h1" :tier="$job['job_tier']">
-                                        Tier: {{ $job['job_tier'] }}
+                                        Tier: {{ $job['job_tier'] ?? 'Unknown Tier' }}
                                     </x-tier-coloring>
                                 </div>
                         
                                 <div class="flex justify-between item-center">
                                     {{-- SALARY --}}
-                                    <h1 class="text-2xl lg:text-base font-bold text-gray-700 dark:text-gray-200 md:text-xl">{{ $job['salary'] }}</h1>
+                                    <h1 class="text-2xl lg:text-base font-bold text-gray-700 dark:text-gray-200 md:text-xl">{{ $job['salary'] ?? 'Unknown Salary'}}</h1>
 
                                     {{-- BUTTONS --}}
 

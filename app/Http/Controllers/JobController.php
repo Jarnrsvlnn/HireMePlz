@@ -19,6 +19,7 @@ class JobController extends Controller
     {
         $this->authorizeResource(Job::class, 'job');
     }
+    
     /**
      * Display a listing of the resource.
      */
