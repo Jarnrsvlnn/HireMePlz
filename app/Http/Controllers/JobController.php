@@ -11,6 +11,8 @@ use App\Http\Requests\UpdateJobRequest;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\GodlikeJobObtained;
 
 class JobController extends Controller
 {
@@ -43,6 +45,7 @@ class JobController extends Controller
     public function store(CreateJobRequest $request, CreateJob $createJob)
     {
         $createJob($request->user(), $request->validated());
+        
         return redirect()->route('jobs.index')->with('success', 'Job created successfully! ');
     }
 

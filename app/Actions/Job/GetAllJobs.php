@@ -12,6 +12,6 @@ class GetAllJobs {
                 ->jobs()
                 ->select('jobs.id', 'jobs.job_title', 'jobs.salary', 'jobs.description', 'jobs.job_tier')
                 ->latest()
-                ->paginate(6);
+                ->paginate(16);
     }
 }

@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Mail\GodlikeJobObtained;
+use Illuminate\Support\Facades\Mail;
 
 Route::view('/', 'home.index')->name('home.index');
 
