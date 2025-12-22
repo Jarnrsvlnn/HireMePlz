@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Job;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -16,7 +17,7 @@ class GodlikeJobObtained extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(protected Job $job)
     {
         //
     }
@@ -39,6 +40,10 @@ class GodlikeJobObtained extends Mailable
     {
         return new Content(
             markdown: 'mail.godlike-job-obtained',
+            with: [
+                'job_id' => $this->job->id,
+                'job_title' => $this->job->job_title
+            ]
         );
     }
 

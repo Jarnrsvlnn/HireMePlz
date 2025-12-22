@@ -13,8 +13,9 @@ class CreateJob {
         $job = $user->jobs()->create($data);
 
         if ($job['job_tier'] == 'Godlike') {
-            Mail::to('jarorosaurusrex@gmail.com')->send(new GodlikeJobObtained());
+            Mail::to($user->email)->queue(new GodlikeJobObtained($job));
         }
+
         return $job;
     }
     
