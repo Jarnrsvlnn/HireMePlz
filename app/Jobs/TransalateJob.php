@@ -13,7 +13,7 @@ class TransalateJob implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(public Job $jobListing)
+    public function __construct(public Job $currentJob)
     {
         //
     }
@@ -23,6 +23,6 @@ class TransalateJob implements ShouldQueue
      */
     public function handle(): void
     {
-        logger('Translating ' . $this->jobListing->job_title . 'into spanish.');
+        logger('Translating ' . $this->currentJob->job_title . 'into spanish.');
     }
 }

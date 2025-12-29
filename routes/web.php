@@ -5,20 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
-use App\Jobs\TransalateJob;
-use App\Mail\GodlikeJobObtained;
-use App\Models\Job;
-use Illuminate\Support\Facades\Mail;
 
 Route::view('/', 'home.index')->name('home.index');
-
-Route::get('test', function() {
-
-    $job = Job::first();
-    TransalateJob::dispatch($job);
-
-    return 'Done';
-});
 
 Route::middleware(['auth'])->group(function() {
     // NAV ROUTES
