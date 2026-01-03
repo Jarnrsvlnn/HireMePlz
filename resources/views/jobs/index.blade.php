@@ -12,7 +12,7 @@
             
             <div class="flex justify-between">
 
-                <h1 class="text-3xl font-bold tracking-tight text-white">Sorted By: {{ \App\Services\StringFormatter::title(request('sort')) }}</h1>
+                <h1 class="text-3xl font-bold tracking-tight text-white">Sorted By: {{ \App\Services\StringFormatter::title(request('sort') ?? 'Newest') }}</h1>
 
                 {{-- BUTTON CONTAINER --}}
                 <div class="flex flex-row justify-end gap-5">
