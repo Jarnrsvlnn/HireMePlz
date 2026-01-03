@@ -1,20 +1,19 @@
 @props([
     'type' => 'p',
     'tier' => 'Common'
-]);
+])
 
+@php
+$tag = $type == 'p' ? 'p' : ($type == 'option' ? 'option' : 'h1');
+$class = match($tier) {
+    'Common' => 'text-green-500',
+    'Uncommon' => 'text-blue-500',
+    'Kinda mid' => 'text-pink-500',
+    'Epic' => 'text-purple-700',
+    'Legendary' => 'text-yellow-500',
+    'Godlike' => 'text-red-500',
+    default => 'text-gray-500'
+};
+@endphp
 
-
-@if ($tier == 'Common')
-    <{{ $type == 'p' ? 'p' : ($type == 'option' ? 'option' : 'h1') }} class="text-lg md:text-sm text-green-500 uppercase"><strong>{{ $slot }}</strong></p>
-@elseif ($tier =='Uncommon')
-    <{{ $type == 'p' ? 'p' : ($type == 'option' ? 'option' : 'h1') }} class="text-lg md:text-sm text-blue-500 uppercase"><strong>{{ $slot }}</strong></p>
-@elseif ($tier =='Kinda mid')
-    <{{ $type == 'p' ? 'p' : ($type == 'option' ? 'option' : 'h1') }} class="text-lg md:text-sm text-pink-500 uppercase"><strong>{{ $slot }}</strong></p>
-@elseif ($tier =='Epic')
-    <{{ $type == 'p' ? 'p' : ($type == 'option' ? 'option' : 'h1') }} class="text-lg md:text-sm text-purple-700 uppercase"><strong>{{ $slot }}</strong></p>
-@elseif ($tier =='Legendary')
-    <{{ $type == 'p' ? 'p' : ($type == 'option' ? 'option' : 'h1') }} class="text-lg md:text-sm text-yellow-500 uppercase"><strong>{{ $slot }}</strong></p>    
-@elseif ($tier =='Godlike')
-    <{{ $type == 'p' ? 'p' : ($type == 'option' ? 'option' : 'h1') }} class="text-lg md:text-sm text-red-500 uppercase"><strong>{{ $slot }}</strong></p>
-@endif
+<{{ $tag }} class="text-lg md:text-sm {{ $class }} uppercase"><strong>{{ $slot }}</strong></{{ $tag }}>
