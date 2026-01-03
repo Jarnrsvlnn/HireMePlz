@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>
-        View Jobs
+        Jobs
     </x-slot:title>
     <x-slot:header>
         Jobs / All
@@ -9,32 +9,38 @@
     <div class="flex min-h-screen mx-auto max-w-7xl">
         <div class="flex flex-1 flex-col gap-15 mx-auto px-4 py-6 sm:px-6 lg:px-9">
         
-            {{-- EDIT BUTTON --}}
-            <div class="flex flex-row justify-end gap-5">
+            
+            <div class="flex justify-between">
 
-                {{-- SORT BUTTON --}}
-                <div>
-                    <x-button id="sort-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
-                        </svg>     
+                <h1 class="text-3xl font-bold tracking-tight text-white">Sorted By: {{ \App\Services\StringFormatter::title(request('sort')) }}</h1>
+
+                {{-- BUTTON CONTAINER --}}
+                <div class="flex flex-row justify-end gap-5">
+                    {{-- SORT BUTTON --}}
+                    <div>
+                        <x-button id="sort-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                            </svg>     
                         <span class="mx-1">Sort</span>    
-                    </x-button>
+                        </x-button>
 
-                    <div id="sort-options" class="hidden absolute cursor-pointer rounded-lg bg-blue-200">
-                        <a href="{{ request()->fullUrlWithQuery(['sort' => 'newest']) }}" class="block px-4 py-2 hover:bg-gray-100">Newest</a>
-                        <a href="{{ request()->fullUrlWithQuery(['sort' => 'oldest']) }}" class="block px-4 py-2 hover:bg-gray-100">Oldest</a>
-                        <a href="{{ request()->fullUrlWithQuery(['sort' => 'tier']) }}" class="block px-4 py-2 hover:bg-gray-100">Tier</a>
+                        <div id="sort-options" class="hidden absolute cursor-pointer rounded-lg bg-blue-200">
+                            <a href="{{ request()->fullUrlWithQuery(['sort' => 'newest']) }}" class="block px-4 py-2 hover:bg-gray-100">Newest</a>
+                            <a href="{{ request()->fullUrlWithQuery(['sort' => 'oldest']) }}" class="block px-4 py-2 hover:bg-gray-100">Oldest</a>
+                            <a href="{{ request()->fullUrlWithQuery(['sort' => 'tier']) }}" class="block px-4 py-2 hover:bg-gray-100">Tier</a>
+                        </div>
                     </div>
+                    
+                    {{-- CREATE BUTTON --}}
+                    <x-button id='open-dialog'>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        <span class="mx-1">Create</span>
+                    </x-button>
                 </div>
-                
-                {{-- CREATE BUTTON --}}
-                <x-button id='open-dialog'>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
-                    <span class="mx-1">Create</span>
-                </x-button>
+
             </div>
     
             {{-- JOBS SECTION --}}
