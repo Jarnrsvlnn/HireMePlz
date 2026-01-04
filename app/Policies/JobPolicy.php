@@ -29,25 +29,23 @@ class JobPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->isAdmin();
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Job $job): bool
+    public function update(User $user): bool
     {
-        return $job->users() 
-                ->where('users.id', $user->id)
-                ->exists();
+        return $user->isAdmin();
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Job $job): bool
+    public function delete(User $user): bool
     {
-        return $this->update($user, $job);
+        return $user->isAdmin();
     }
 
     /**
@@ -63,6 +61,6 @@ class JobPolicy
      */
     public function forceDelete(User $user, Job $job): bool
     {
-        return $this->update($user, $job);
+        return $user->isAdmin();
     }
 }

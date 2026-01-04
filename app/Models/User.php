@@ -47,7 +47,18 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'admin' => 'boolean'
         ];
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->admin;
+    }
+
+    public function isUser(): bool
+    {
+        return ! $this->admin;
     }
 
     public function jobs()
