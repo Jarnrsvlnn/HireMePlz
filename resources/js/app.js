@@ -13,14 +13,22 @@ const sortOptions = document.querySelector('#sort-options');
 
 if (backButton) { backButton.addEventListener('click', () => history.back()); }
 
-openEditDialog.addEventListener('click', () => {
-    editDialog.showModal();
-});
+if (openEditDialog && closeEditDialog) {
+    openEditDialog.addEventListener('click', () => {
+        editDialog.showModal();
+    });
+    
+    closeEditDialog.addEventListener('click', () => {
+        editDialog.close();
+    });
+}
 
-closeEditDialog.addEventListener('click', () => {
-    editDialog.close();
-});
+if (sortButton && sortOptions) {
+    sortButton.addEventListener('click', () => {
+        // Tailwind toggle
+        sortOptions.classList.toggle('hidden');
 
-sortButton.addEventListener('click', () => {
-    sortOptions.classList.toggle('hidden');
-});
+        // Optional: bring dropdown to front
+        sortOptions.classList.toggle('z-50');
+    });
+}
