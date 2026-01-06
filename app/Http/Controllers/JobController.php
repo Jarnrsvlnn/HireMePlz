@@ -25,7 +25,7 @@ class JobController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(GetAllJobs $getAllJobs, Request $request, Job $job)
+    public function index(GetAllJobs $getAllJobs, Request $request)
     {
         $jobs = $getAllJobs($request);
         return view('jobs.index', compact('jobs'));

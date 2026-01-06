@@ -71,11 +71,11 @@
 
                                     <el-menu anchor="bottom end" popover class="w-48 origin-top-right rounded-md bg-gray-800 py-1 outline-1 -outline-offset-1 outline-white/10 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
                                         @auth
-                                            <a href="{{ route('profile.index') }}" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Profile</a>
+                                            <a href="{{ route('profile.index') }}" class="w-full block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Profile</a>
 
                                             <form action="{{ route('logout') }}" method="POST">
                                                 @csrf
-                                                <button type="submit" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Logout</button>
+                                                <button type="submit" class="text-left w-full block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Logout</button>
                                             </form>
                                         @endauth
                                         @guest

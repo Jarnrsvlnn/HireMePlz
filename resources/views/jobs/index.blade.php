@@ -48,7 +48,7 @@
             {{-- JOBS SECTION --}}
             <section class="flex-1 items-start grid gap-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:grid-rows-4"> 
                 {{-- JOB CARDS --}}
-                @if (auth()->user()->jobs->isNotEmpty())
+                @if ($jobs->isNotEmpty())
                     @foreach ($jobs as $job)
                             
                     <x-card-border :tier="$job->job_tier">

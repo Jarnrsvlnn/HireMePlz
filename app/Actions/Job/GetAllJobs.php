@@ -2,6 +2,7 @@
 
 namespace App\Actions\Job;
 
+use App\Models\Job;
 use Illuminate\Http\Request;
 
 class GetAllJobs {
@@ -10,9 +11,14 @@ class GetAllJobs {
     {
 
         $sortMethod = $request->query('sort');
-        $query = $request->user()
-                        ->jobs()
-                        ->select('jobs.id', 'jobs.job_title', 'jobs.salary', 'jobs.description', 'jobs.job_tier');
+
+        if($request->user()->isAdmin()) {
+            $query = Job::query();
+        } else {
+            $query = $request->user()
+            ->jobs()
+            ->select('jobs.id', 'jobs.job_title', 'jobs.salary', 'jobs.description', 'jobs.job_tier');
+        }
         
         switch($sortMethod) 
         {
