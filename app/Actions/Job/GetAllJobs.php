@@ -9,17 +9,23 @@ class GetAllJobs {
 
     public function __invoke(Request $request)
     {
-
         $sortMethod = $request->query('sort');
 
-        if($request->user()->isAdmin()) {
-            $query = Job::query();
-        } else {
-            $query = $request->user()
-            ->jobs()
-            ->select('jobs.id', 'jobs.job_title', 'jobs.salary', 'jobs.description', 'jobs.job_tier');
-        }
+        if($request->user()->isAdmin()) $query = Job::query();
         
+        else $query = $request->user()->jobs()
+            ->select('jobs.id', 'jobs.job_title', 'jobs.salary', 'jobs.description', 'jobs.job_tier');
+        
+        
+        $query = $this->sortItems($sortMethod, $query);
+
+        return $query
+            ->paginate(16)
+            ->withQueryString();
+    }
+
+    private function sortItems($sortMethod, $query)
+    {
         switch($sortMethod) 
         {
             case 'newest':
@@ -45,8 +51,6 @@ class GetAllJobs {
                 break;
         }
 
-        return $query
-            ->paginate(16)
-            ->withQueryString();
+        return $query;
     }
 }

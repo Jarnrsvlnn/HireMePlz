@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlmanacController;
 use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
@@ -12,7 +13,7 @@ Route::view('/', 'home.index')->name('home.index');
 Route::middleware(['auth'])->group(function() {
     // NAV ROUTES
     Route::resource('jobs', JobController::class)->only('index', 'show');
-    Route::view('/almanac', 'almanac.index');
+    Route::get('/almanac', [AlmanacController::class, 'index']);
 
     // PROFILE ROUTES
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
