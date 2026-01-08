@@ -44,8 +44,11 @@
                                     <x-tabLinks href="/jobs" :active="request()->is('jobs')"> Jobs </x-tabLinks>    
                                 @endauth  
                                 <x-tabLinks href="/almanac" :active="request()->is('almanac')"> Almanac </x-tabLinks>
+                                @auth
+                                    <x-tabLinks href="/gacha" :active="request()->is('gacha')"> Gacha </x-tabLinks>    
+                                @endauth  
                             </div>
-                        </div>
+                    </div>
 
                         {{-- NAVBAR RIGHT-SECTION --}}
                         <div class="hidden md:block">

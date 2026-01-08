@@ -5,6 +5,7 @@ use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\GachaController;
 use App\Http\Controllers\ProfileController; 
 
 Route::view('/', 'home.index')->name('home.index');
@@ -14,6 +15,7 @@ Route::middleware(['auth'])->group(function() {
     // NAV ROUTES
     Route::resource('jobs', JobController::class)->only('index', 'show');
     Route::get('/almanac', [AlmanacController::class, 'index']);
+    Route::get('/gacha', [GachaController::class, 'index']);
 
     // PROFILE ROUTES
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
