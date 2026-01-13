@@ -21,7 +21,9 @@
 
             {{-- JOB TITLE SECTION --}}
             <div class="border flex-1">
-                <x-banner.job-title>Software Engineer</x-banner.job-title>
+                @foreach ($jobs as $job)
+                    <x-banner.banner-title>{{ $job->job_title }}</x-banner.banner-title>
+                @endforeach
             </div>
 
             {{-- BANNER DESC. SECTION --}}
