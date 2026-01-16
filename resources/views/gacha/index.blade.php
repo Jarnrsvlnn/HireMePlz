@@ -21,9 +21,10 @@
 
             {{-- JOB TITLE SECTION --}}
             <div class="border flex-1">
-                @foreach ($jobs as $job)
-                    <x-banner.banner-title>{{ $job->job_title }}</x-banner.banner-title>
+                @foreach ($pulls as $pull)
+                    <x-banner.banner-title>{{ $pull['job_title']}}</x-banner.banner-title>
                 @endforeach
+
             </div>
 
             {{-- BANNER DESC. SECTION --}}
@@ -32,8 +33,9 @@
             </div>
 
             {{-- BANNER LOWER SECTION --}}
-            <div class="border flex-1">
-                <x-banner.banner-draw-button>Draw 10X</x-banner.banner-draw-button>
+            <div class="border flex-1 flex items-end justify-end gap-10 p-5">
+                <x-banner.banner-draw-button href="{{ request()->fullUrlWithQuery(['multi' => 1]) }}">Draw 1x</x-banner.banner-draw-button>
+                <x-banner.banner-draw-button href="{{ request()->fullUrlWithQuery(['multi' => 10]) }}">Draw 10x</x-banner.banner-draw-button>
             </div>
         </section>
     </div>
