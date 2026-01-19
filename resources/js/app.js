@@ -11,9 +11,6 @@ const closeEditDialog = document.querySelector('dialog #close-dialog');
 const sortButton = document.querySelector('#sort-button');
 const sortOptions = document.querySelector('#sort-options');
 
-// GACHA VARS
-const drawButtons = document.querySelectorAll('#banner-buttons .draw-button');
-
 if (backButton) { backButton.addEventListener('click', () => history.back()); }
 
 if (openEditDialog && closeEditDialog) {
@@ -36,12 +33,19 @@ if (sortButton && sortOptions) {
     });
 }
 
-if (drawButtons) {
+// GACHA SECTION
+document.addEventListener('DOMContentLoaded', () => {
+    const pullsSection = document.querySelector('#pulls-section');
+    const closePullsSection = document.querySelector('#close-pulls-section');
 
-    drawButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            alert('haha');
+    // Auto-open modal AFTER redirect if pulls exist
+    if (pullsSection?.dataset.hasPulls === 'true') {
+        pullsSection.showModal();
+    }
+
+    if (pullsSection && closePullsSection) {
+        closePullsSection.addEventListener('click', () => {
+            pullsSection.close();
         });
-    });
-    
-}
+    }
+});

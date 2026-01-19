@@ -3,7 +3,7 @@
 
 {{-- UPDATE FORM --}}
 @if ($formType == 'update')
-    <dialog class="p-0 rounded-lg w-full max-w-lg backdrop:bg-black/50" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <x-modal-base>
         <div class="px-6 py-5 bg-white dark:bg-gray-900 rounded-lg shadow-xl">
             <h2 class="text-lg font-semibold text-gray-700 dark:text-white">
                 Update Job
@@ -65,11 +65,11 @@
                 </div>
             </form>
         </div>
-    </dialog>
+    </x-modal-base>
     
     {{-- CREATE FORM --}}
 @else
-    <dialog class="p-0 rounded-lg w-full max-w-lg backdrop:bg-black/50" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <x-modal-base>
         <div class="px-6 py-5 bg-white dark:bg-gray-900 rounded-lg shadow-xl">
             <h2 class="text-lg font-semibold text-gray-700 dark:text-white">
                 Create Job
@@ -129,6 +129,6 @@
                 </div>
             </form>
         </div>
-    </dialog>
+    </x-modal-base>
 
 @endif

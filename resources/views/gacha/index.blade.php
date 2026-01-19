@@ -21,13 +21,7 @@
 
             {{-- JOB TITLE SECTION --}}
             <div class="border flex-1">
-                @if (!empty($pulls))
-                    @foreach ($pulls as $pull)
-                        <x-banner.banner-title>
-                            {{ $pull['job_title'] }}
-                        </x-banner.banner-title>
-                    @endforeach
-                @endif
+
             </div>
 
             {{-- BANNER DESC. SECTION --}}
@@ -43,3 +37,19 @@
         </section>
     </div>
 </x-layout>
+
+<x-modal-base 
+    id="pulls-section"
+    data-has-pulls="{{ !empty($pulls) ? 'true' : 'false'}}"
+>
+
+    @if (!empty($pulls))
+        @foreach ($pulls as $pull)
+            <x-banner.banner-title>
+                {{ $pull['job_title'] }}
+            </x-banner.banner-title>
+        @endforeach
+    @endif
+
+    <x-button buttonType="button" id="close-pulls-section">Close</x-button>
+</x-modal-base>
