@@ -15,7 +15,7 @@ Route::middleware(['auth'])->group(function() {
     // NAV ROUTES
     Route::resource('jobs', JobController::class)->only('index', 'show');
     Route::get('/almanac', [AlmanacController::class, 'index']);
-    Route::get('/gacha', [GachaController::class, 'index']);
+    Route::get('/gacha', [GachaController::class, 'index'])->name('gacha.index');
 
     // PROFILE ROUTES
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');

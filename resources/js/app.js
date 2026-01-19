@@ -11,6 +11,9 @@ const closeEditDialog = document.querySelector('dialog #close-dialog');
 const sortButton = document.querySelector('#sort-button');
 const sortOptions = document.querySelector('#sort-options');
 
+// GACHA VARS
+const drawButtons = document.querySelectorAll('#banner-buttons .draw-button');
+
 if (backButton) { backButton.addEventListener('click', () => history.back()); }
 
 if (openEditDialog && closeEditDialog) {
@@ -31,4 +34,14 @@ if (sortButton && sortOptions) {
         // Optional: bring dropdown to front
         sortOptions.classList.toggle('z-50');
     });
+}
+
+if (drawButtons) {
+
+    drawButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            alert('haha');
+        });
+    });
+    
 }

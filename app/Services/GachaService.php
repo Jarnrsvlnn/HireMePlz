@@ -3,12 +3,13 @@
 namespace App\Services;
 
 use App\Actions\Gacha\GetBannerJobs;
+use App\Actions\Gacha\ObtainJob;
 use App\Models\User;
 
 class GachaService
 {
 
-    public function __construct(private GetBannerJobs $bannerJobs){}
+    public function __construct(private GetBannerJobs $bannerJobs, private ObtainJob $obtainJob){}
 
     public function pull(User $user, string $bannerKey, int $multiplier = 1) {
 
@@ -51,7 +52,7 @@ class GachaService
         $randNum = rand(1, $totalWeight);
         $runningSum = 0;
         $rolledTier = null;
-        $job = [];
+        $pulledJobs = [];
 
         for ($i = 0; $i < $multiplier; $i++) {
         
@@ -68,12 +69,13 @@ class GachaService
                 }
             }
     
-            $job[] = $jobs[$rolledTier]->random();
+            $pulledJobs[] = $jobs[$rolledTier]->random();
         }
+
+        ($this->obtainJob)($user, $pulledJobs);
         
         return [
-            'tier' => $rolledTier,
-            'job' => $job,
+            'job' => $pulledJobs,
         ];
     }
 }
