@@ -4,14 +4,17 @@ namespace App\Services;
 
 use App\Actions\Gacha\GetBannerJobs;
 use App\Actions\Gacha\ObtainJob;
+use App\Models\GachaPity;
 use App\Models\User;
 
 class GachaService
 {
 
-    public function __construct(private GetBannerJobs $bannerJobs, private ObtainJob $obtainJob){}
+    public function __construct(private GetBannerJobs $bannerJobs, private ObtainJob $obtainJob)
+    {}
 
-    public function pull(User $user, string $bannerKey, int $multiplier = 1) {
+    public function pull(User $user, string $bannerKey, int $multiplier = 1) 
+    {
 
         // get the banner 
         $banner = config("gacha.banners.$bannerKey") ?? config('gacha.banners.limited');
@@ -53,6 +56,10 @@ class GachaService
         $runningSum = 0;
         $rolledTier = null;
         $pulledJobs = [];
+        $maxPity = config("gacha.pity.$bannerKey.after", 60);
+        $pityTier = config("gacha.pity.$bannerKey.min_tier", 'Godlike');
+        $pity = $this->getPity($user, $bannerKey);
+
 
         for ($i = 0; $i < $multiplier; $i++) {
         
@@ -60,15 +67,31 @@ class GachaService
             $randNum = rand(1, $totalWeight);
             $runningSum = 0;
             $rolledTier = null;
+            $forcePity = $pity->count >= $maxPity;
     
-            foreach ($weightedTiers as $currentTier => $weight) {
-                $runningSum += $weight;
-                if ($randNum <= $runningSum) {
-                    $rolledTier = $currentTier;
-                    break;
+            if ($forcePity) {
+                $rolledTier = $pityTier;
+            } 
+            else {
+                foreach ($weightedTiers as $currentTier => $weight) {
+                    $runningSum += $weight;
+                    if ($randNum <= $runningSum) {
+                        $rolledTier = $currentTier;
+                        break;
+                    }
                 }
             }
-    
+
+            if (! isset($jobs[$rolledTier])) {
+                continue;
+            }
+            
+            if ($rolledTier === $pityTier) {
+                $pity->update(['count' => 0]);
+            } else {
+                $pity->increment('count');
+            }
+
             $pulledJobs[] = $jobs[$rolledTier]->random();
         }
 
@@ -77,5 +100,13 @@ class GachaService
         return [
             'job' => $pulledJobs,
         ];
+    }
+
+    public function getPity(User $user, string $bannerKey): GachaPity 
+    {
+        return GachaPity::firstOrCreate(
+            ['user_id' => $user->id, 'banner_key' => $bannerKey],
+            ['count' => 0]
+        );
     }
 }

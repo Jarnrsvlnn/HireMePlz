@@ -9,16 +9,16 @@ return [
             'weight' => 9,
         ],
         'Epic' => [
-            'weight' => 20,
+            'weight' => 15,
         ],
         'Kinda mid' => [
-            'weight' => 30
+            'weight' => 20
         ],
         'Uncommon' => [
             'weight' => 25
         ],
         'Common' => [
-            'weight' => 15
+            'weight' => 30
         ]
     ],
 

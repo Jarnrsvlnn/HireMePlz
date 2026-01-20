@@ -20,9 +20,7 @@
             </div>
 
             {{-- JOB TITLE SECTION --}}
-            <div class="border flex-1">
-
-            </div>
+            <div class="border flex-1"></div>
 
             {{-- BANNER DESC. SECTION --}}
             <div class="border flex-3">
@@ -36,20 +34,29 @@
             </div>
         </section>
     </div>
+    
+    {{-- GACHA PULLS RESULT --}}
+    <x-modal-base 
+        id="pulls-section"
+        data-has-pulls="{{ !empty($pulls) ? 'true' : 'false'}}"
+        class="p-2">
+
+        <div class="flex justify-end p-3">
+            <x-button buttonType="button" id="close-pulls-section">X</x-button>
+        </div>
+        
+
+        <div>
+            @if (!empty($pulls))
+                @foreach ($pulls as $pull)
+                    <x-banner.banner-title>
+                        {{ $pull['job_title'] }}
+                    </x-banner.banner-title>
+                @endforeach
+            @endif
+        </div>
+
+    </x-modal-base>
+
 </x-layout>
 
-<x-modal-base 
-    id="pulls-section"
-    data-has-pulls="{{ !empty($pulls) ? 'true' : 'false'}}"
->
-
-    @if (!empty($pulls))
-        @foreach ($pulls as $pull)
-            <x-banner.banner-title>
-                {{ $pull['job_title'] }}
-            </x-banner.banner-title>
-        @endforeach
-    @endif
-
-    <x-button buttonType="button" id="close-pulls-section">Close</x-button>
-</x-modal-base>
