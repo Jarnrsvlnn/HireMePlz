@@ -11,4 +11,9 @@ class GachaPity extends Model
         'banner_key',
         'count'
     ];
+
+    public function user() 
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -20,7 +20,7 @@
             </div>
 
             {{-- JOB TITLE SECTION --}}
-            <div class="border flex-1"></div>
+            <div class="border flex-1">{{ $pity }}</div>
 
             {{-- BANNER DESC. SECTION --}}
             <div class="border flex-3">

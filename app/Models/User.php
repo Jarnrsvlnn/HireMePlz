@@ -63,6 +63,11 @@ class User extends Authenticatable
 
     public function jobs()
     {
-        return $this->belongsToMany(Job::class, );
+        return $this->belongsToMany(Job::class);
+    }
+
+    public function gachaPities()
+    {
+        return $this->hasMany(GachaPity::class);
     }
 }

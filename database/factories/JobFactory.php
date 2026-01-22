@@ -20,7 +20,7 @@ class JobFactory extends Factory
         return [
             'job_title' => fake()->jobTitle(),
             'salary' => '$67',
-            'description' => fake()->paragraph(),
+            'description' => fake()->paragraph(1),
             'job_tier' => fake()->randomElement(['Common', 'Uncommon', 'Kinda mid', 'Epic', 'Legendary', 'Godlike']),
             'created_at' => now(),
             'updated_at' => now()
