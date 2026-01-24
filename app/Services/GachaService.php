@@ -98,7 +98,7 @@ class GachaService
         ($this->obtainJob)($user, $pulledJobs);
         
         return [
-            'job' => $pulledJobs,
+            'job' => $pulledJobs
         ];
     }
 

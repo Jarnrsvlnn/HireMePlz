@@ -13,7 +13,8 @@ class Job extends Model
         'job_title',
         'salary',
         'description',
-        'job_tier'
+        'job_tier',
+        'category'
     ];
 
     public function users()

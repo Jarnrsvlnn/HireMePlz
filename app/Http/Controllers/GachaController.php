@@ -13,6 +13,7 @@ class GachaController extends Controller
         // getting the banner and the jobs that can be obtained within
         $bannerSection = $request->query('banner', 'limited');
         $banner = config("gacha.banners.$bannerSection") ?? config("gacha.banners.limited");
+        $maxPity = config("gacha.pity.$bannerSection.after", 60);
         $pity = $bannerPity($request->user(), $bannerSection);
         
         if ($request->has('multi')) {
@@ -23,7 +24,8 @@ class GachaController extends Controller
             return redirect()
                 ->route('gacha.index', [
                     'banner' => $bannerSection,
-                    'pity' => $pity
+                    'pity' => $pity,
+                    'maxPity' => $maxPity
                     ])
                 ->with('pulls', $pulls);
         }
@@ -31,7 +33,8 @@ class GachaController extends Controller
         return view('gacha.index', [
             'banner' => $banner,
             'pulls' => session('pulls'),
-            'pity' => $pity
+            'pity' => $pity,
+            'maxPity' => $maxPity
         ]);
     }
 }

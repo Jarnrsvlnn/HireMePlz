@@ -20,7 +20,7 @@
             </div>
 
             {{-- JOB TITLE SECTION --}}
-            <div class="border flex-1">{{ $pity }}</div>
+            <div class="border flex-1">{{ $pity }} / {{ $maxPity }}</div>
 
             {{-- BANNER DESC. SECTION --}}
             <div class="border flex-3">
