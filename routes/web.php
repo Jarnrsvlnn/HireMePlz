@@ -26,7 +26,6 @@ Route::middleware(['auth'])->group(function() {
 
 // ADMIN ROUTES
 Route::middleware(['auth', 'admin'])->group(function () {
-// NAV ROUTES
     Route::resource('jobs', JobController::class)->except('index', 'show');
 });
 
@@ -38,9 +37,3 @@ Route::middleware(['guest'])->group(function() {
     Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
     Route::post('/login', [LoginController::class, 'loginUser'])->name('login.loginUser');
 });
-
-
-
-
-
-

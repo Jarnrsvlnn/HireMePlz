@@ -94,10 +94,10 @@
                     
                         <x-form-error name="salary"/>
                     </div>
-                    {{-- JOB TIER --}}
+                    {{-- JOB CATEGORY --}}
                     <div>
-                        <x-form-label>Job Tier</x-form-label>
-                        <select name="job_tier" required
+                        <x-form-label>Category</x-form-label>
+                        <select name="category" required
                             class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
 
                             <option value="Technology">Technology</option>
@@ -132,10 +132,10 @@
                         <x-form-error name="description"/>
                     </div>
 
-                    {{-- JOB CATEGORY --}}
+                    {{-- JOB TIER --}}
                     <div>
-                        <x-form-label>Category</x-form-label>
-                        <select name="category" required
+                        <x-form-label>Job Tier</x-form-label>
+                        <select name="job_tier" required
                             class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
                             <option value="Godlike">Godlike</option>
                             <option value="Legendary">Legendary</option>

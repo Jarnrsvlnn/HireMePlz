@@ -26,28 +26,7 @@ class CreateJobRequest extends FormRequest
             'salary' => 'required|string',
             'description' => 'required|string|min:3',
             'job_tier' => 'required|string|in:Godlike,Legendary,Epic,Kinda mid,Uncommon,Common',
-            'category' => 'required|string|in:
-                Technology, 
-                Design & Creative, 
-                Business Management, 
-                Sales & Marketing, 
-                Finance & Accounting, 
-                Human Resources, 
-                Customer Service, 
-                Healthcare, 
-                Education, 
-                Engineering, 
-                Construction & Trades, 
-                Legal, 
-                Media & Communication, 
-                Hospitality & Tourism, 
-                Logistics & Transportation, 
-                Retail & E-commerce, 
-                Government & Public Service, 
-                Science & Research', 'Agriculture, 
-                Maintenance $ Services, 
-                Arts & Entertainment, 
-                Other'
+            'category' => 'required|string|in:Technology,Design & Creative,Business Management,Sales & Marketing,Finance & Accounting,Human Resources,Customer Service,Healthcare,Education,Engineering,Construction & Trades,Legal,Media & Communication,Hospitality & Tourism,Logistics & Transportation,Retail & E-commerce,Government & Public Service,Science & Research','Agriculture,Maintenance & Services,Arts & Entertainment,Other'
         ];
     }
 }
