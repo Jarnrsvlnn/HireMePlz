@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Job\GetAllJobs;
+use App\Actions\Almanac\GetJobPerCategory;
 use Illuminate\Http\Request;
 
 class AlmanacController extends Controller
@@ -10,57 +10,15 @@ class AlmanacController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(GetAllJobs $getAllJobs, Request $request)
+    public function index(GetJobPerCategory $getAllJobs, Request $request)
     {
-        $jobs = $getAllJobs($request);
-        return view('almanac.index', compact('jobs'));
-    }
+        $category = $request->query('category');
+        $jobs = null;
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        if ($category) {
+            $jobs = $getAllJobs($request);
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('almanac.index', compact('jobs', 'category'));
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-}
+}   

@@ -14,7 +14,8 @@ Route::view('/', 'home.index')->name('home.index');
 Route::middleware(['auth'])->group(function() {
     // NAV ROUTES
     Route::resource('jobs', JobController::class)->only('index', 'show');
-    Route::get('/almanac', [AlmanacController::class, 'index']);
+    Route::get('/almanac', [AlmanacController::class, 'index'])->name('almanac.index');
+    Route::get('/almanac/category', [AlmanacController::class, 'show']);
     Route::get('/gacha', [GachaController::class, 'index'])->name('gacha.index');
 
     // PROFILE ROUTES

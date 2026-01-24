@@ -117,9 +117,10 @@
                             <option value="Retail & E-commerce">Retail & E-commerce</option>
                             <option value="Government & Public Service">Government & Public Service</option>
                             <option value="Science & Research', 'Agriculture">Science & Research', 'Agriculture</option>
-                            <option value="Maintenance $ Services">Maintenance $ Services</option>
+                            <option value="Maintenance & Services">Maintenance & Services</option>
                             <option value="Arts & Entertainment">Arts & Entertainment</option>
                             <option value="Other">Other</option>
+
                         </select>
 
                         <x-form-error name="category"/>

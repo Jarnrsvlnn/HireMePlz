@@ -1,28 +1,18 @@
 <?php
 
-namespace Database\Factories;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\User;
-
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Job>
- */
-class JobFactory extends Factory
+return new class extends Migration
 {
     /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
+     * Run the migrations.
      */
-    public function definition(): array
+    public function up(): void
     {
-        return [
-            'job_title' => fake()->jobTitle(),
-            'salary' => '$67',
-            'description' => fake()->paragraph(1),
-            'job_tier' => fake()->randomElement(['Common', 'Uncommon', 'Kinda mid', 'Epic', 'Legendary', 'Godlike']),
-            'category' => fake()->randomElement([
+        Schema::table('jobs', function (Blueprint $table) {
+            $table->enum('category', [
                 'Technology', 
                 'Design & Creative', 
                 'Business Management', 
@@ -43,9 +33,18 @@ class JobFactory extends Factory
                 'Science & Research', 'Agriculture', 
                 'Maintenance & Services', 
                 'Arts & Entertainment', 
-                'Other']),
-            'created_at' => now(),
-            'updated_at' => now()
-        ];
+                'Other'])
+                ->nullable()->change();
+        });
     }
-}
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('jobs', function (Blueprint $table) {
+            $table->string('category')->nullable()->change();
+        });
+    }
+};
