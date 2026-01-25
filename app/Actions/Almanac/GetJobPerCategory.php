@@ -12,14 +12,7 @@ class GetJobPerCategory {
         $sortMethod = $request->query('sort');
         $category = $request->query('category');
 
-        if($request->user()->isAdmin()) 
-        {
-            $query = Job::query();
-        }
-        else 
-        {
-            $query = $request->user()->jobs()->select('jobs.id', 'jobs.job_title', 'jobs.salary', 'jobs.description', 'jobs.job_tier');
-        }    
+        $query = Job::query();
 
         if($category) 
         {
