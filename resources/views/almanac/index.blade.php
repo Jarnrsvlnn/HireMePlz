@@ -7,17 +7,6 @@
             Almanac
         </x-slot:header>
 
-        {{-- BUTTONS SECTION --}}
-        <section id="job-details-btns-section" class="flex flex-row justify-between">
-            <x-button id="back-button">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
-                </svg>
-                
-                <span class="mx-1">Previous</span>
-            </x-button>
-        </section>
-
         @if (!$category)
             <section class="border flex-1 items-start grid gap-x-10 gap-y-15 grid-cols-2 lg:gap-x-25 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:grid-rows-3"> 
                 <x-almanac.almanac-sections category="Technology">Technology</x-almanac.almanac-sections>
@@ -42,6 +31,18 @@
                 <x-almanac.almanac-sections category="Arts & Entertainment">Arts & Entertainment</x-almanac.almanac-sections>
             </section>
         @else
+            {{-- BUTTONS SECTION --}}
+            <section id="job-details-btns-section" class="flex flex-row justify-between">
+                <x-button id="back-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                    </svg>
+                    
+                    <span class="mx-1">Previous</span>
+                </x-button>
+            </section>
+
+            {{-- MAIN SECTION --}}
             <div class="flex flex-1 flex-col gap-15 mx-auto px-4 py-6 sm:px-6 lg:px-9">
             
                 <div class="flex justify-between">
