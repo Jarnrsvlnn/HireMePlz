@@ -13,6 +13,17 @@ const sortOptions = document.querySelector('#sort-options');
 
 if (backButton) { backButton.addEventListener('click', () => history.back()); }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.querySelector('#menu');
+    const dropdownMenu = document.querySelector('#menu-dropdown');
+
+    menuBtn.addEventListener('click', () => {
+        console.log('clicked');
+        dropdownMenu.classList.toggle('hidden')
+        dropdownMenu.classList.toggle('z-50')
+    });
+})
+
 if (openEditDialog && closeEditDialog) {
     openEditDialog.addEventListener('click', () => {
         editDialog.showModal();
@@ -20,7 +31,7 @@ if (openEditDialog && closeEditDialog) {
     
     closeEditDialog.addEventListener('click', () => {
         editDialog.close();
-    });
+    }); 
 }
 
 if (sortButton && sortOptions) {
