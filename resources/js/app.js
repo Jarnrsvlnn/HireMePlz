@@ -1,62 +1,70 @@
 import './bootstrap';
 import '@tailwindplus/elements';
 
-// DIALOG VARS
-const backButton = document.querySelector('#back-button');
-const editDialog = document.querySelector('dialog');
-const openEditDialog = document.querySelector('#open-dialog');
-const closeEditDialog = document.querySelector('dialog #close-dialog');
-
-// SORTING VARS
-const sortButton = document.querySelector('#sort-button');
-const sortOptions = document.querySelector('#sort-options');
-
-if (backButton) { backButton.addEventListener('click', () => history.back()); }
-
 document.addEventListener('DOMContentLoaded', () => {
+
+    /* =========================
+       NAV / MENU
+    ========================== */
     const menuBtn = document.querySelector('#menu');
     const dropdownMenu = document.querySelector('#menu-dropdown');
 
-    menuBtn.addEventListener('click', () => {
-        console.log('clicked');
-        dropdownMenu.classList.toggle('hidden')
-        dropdownMenu.classList.toggle('z-50')
-    });
-})
+    if (menuBtn && dropdownMenu) {
+        menuBtn.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('hidden');
+            dropdownMenu.classList.toggle('z-50');
+        });
+    }
 
-if (openEditDialog && closeEditDialog) {
-    openEditDialog.addEventListener('click', () => {
-        editDialog.showModal();
-    });
-    
-    closeEditDialog.addEventListener('click', () => {
-        editDialog.close();
-    }); 
-}
+    /* =========================
+       BACK BUTTON
+    ========================== */
+    const backButton = document.querySelector('#back-button');
+    if (backButton) {
+        backButton.addEventListener('click', () => history.back());
+    }
 
-if (sortButton && sortOptions) {
-    sortButton.addEventListener('click', () => {
-        // Tailwind toggle
-        sortOptions.classList.toggle('hidden');
+    /* =========================
+       EDIT DIALOG
+    ========================== */
+    const editDialog = document.querySelector('dialog');
+    const openEditDialog = document.querySelector('#open-dialog');
+    const closeEditDialog = document.querySelector('dialog #close-dialog');
 
-        // Optional: bring dropdown to front
-        sortOptions.classList.toggle('z-50');
-    });
-}
+    if (editDialog && openEditDialog && closeEditDialog) {
+        openEditDialog.addEventListener('click', () => editDialog.showModal());
+        closeEditDialog.addEventListener('click', () => editDialog.close());
+    }
 
-// GACHA SECTION
-document.addEventListener('DOMContentLoaded', () => {
+    /* =========================
+       SORT DROPDOWN
+    ========================== */
+    const sortButton = document.querySelector('#sort-button');
+    const sortOptions = document.querySelector('#sort-options');
+
+    if (sortButton && sortOptions) {
+        sortButton.addEventListener('click', () => {
+            sortOptions.classList.toggle('hidden');
+            sortOptions.classList.toggle('z-50');
+        });
+    }
+
+    /* =========================
+       GACHA / PULLS MODAL
+    ========================== */
     const pullsSection = document.querySelector('#pulls-section');
     const closePullsSection = document.querySelector('#close-pulls-section');
 
-    // Auto-open modal AFTER redirect if pulls exist
-    if (pullsSection?.dataset.hasPulls === 'true') {
-        pullsSection.showModal();
-    }
+    if (pullsSection) {
+        // Auto-open modal after redirect
+        if (pullsSection.dataset.hasPulls === 'true') {
+            pullsSection.showModal();
+        }
 
-    if (pullsSection && closePullsSection) {
-        closePullsSection.addEventListener('click', () => {
-            pullsSection.close();
-        });
+        if (closePullsSection) {
+            closePullsSection.addEventListener('click', () => {
+                pullsSection.close();
+            });
+        }
     }
 });

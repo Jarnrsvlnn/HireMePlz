@@ -4,11 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ $title }}</title>
+        <title></title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -19,94 +20,57 @@
             </style>
         @endif
     </head>
-    <body class="flex lg:p-2 min-h-screen flex-col h-full">
-        <div class="min-h-full">
+    <body class="min-h-screen flex flex-col p-1.5">
 
-            {{-- NAVIGATION BAR --}}
-            <nav class="bg-gray-800/50">
-
-                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div class="flex h-16 items-center justify-between">
-
-                        {{-- NAVBAR LEFT-SECTION --}}
-                        <div class="flex items-center gap-10">
-                            {{-- LOGO --}}
-                            <div class="shrink-0">
-                                <a href="/">
-                                    <x-hmp-logo class="w-12 h-12"/>
-                                </a>    
-                            </div>
-
-                            {{-- TABS --}}
-                            <div class="flex overflow-x-auto whitespace-nowrap">
-                                <x-tabLinks href="/" :active="request()->is('/')"> Home </x-tabLinks>
-                                @auth
-                                    <x-tabLinks href="/jobs" :active="request()->is('jobs')"> Jobs </x-tabLinks>    
-                                @endauth  
-                                <x-tabLinks href="/almanac" :active="request()->is('almanac')"> Almanac </x-tabLinks>
-                                @auth
-                                    <x-tabLinks href="/gacha" :active="request()->is('gacha')"> Gacha </x-tabLinks>    
-                                @endauth  
-                            </div>
-                    </div>
-
-                        {{-- NAVBAR RIGHT-SECTION --}}
-                        <div class="hidden md:block">
-                            <div class="ml-4 flex items-center md:ml-6">
-
-                                {{-- NOTIFICATION --}}
-                                <button type="button" class="relative rounded-full p-1 text-gray-400 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
-                                    <span class="absolute -inset-1.5"></span>
-                                    <span class="sr-only">View notifications</span>
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
-                                        <path d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </button>
-
-                                {{-- NAVBAR PROFILE --}}
-                                <el-dropdown class="relative ml-3">
-                                    <button class="relative flex max-w-xs items-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-                                    <span class="absolute -inset-1.5"></span>
-                                    <span class="sr-only">Open user menu</span>
-                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-8 rounded-full outline -outline-offset-1 outline-white/10" />
-                                    </button>
-                                    
-
-                                    <el-menu anchor="bottom end" popover class="w-48 origin-top-right rounded-md bg-gray-800 py-1 outline-1 -outline-offset-1 outline-white/10 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
-                                        @auth
-                                            <a href="{{ route('profile.index') }}" class="w-full block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Profile</a>
-
-                                            <form action="{{ route('logout') }}" method="POST">
-                                                @csrf
-                                                <button type="submit" class="text-left w-full block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Logout</button>
-                                            </form>
-                                        @endauth
-                                        @guest
-                                            <a href="{{ route('register.showRegister') }}" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Sign up</a>
-                                        @endguest
-
-                                    </el-menu>  
-                                </el-dropdown>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        {{-- NAV BAR --}}
+        <nav class="flex flex-row min-h-14 md:min-h-12 rounded-t-xl justify-between">
+            {{-- LEFT SECTION --}}
+            <div class="h-auto shrink-0 p-2">
+                <a href="/" class="flex">
+                    <x-hmp-logo class="w-10 h-10"/>
+                    <span class="logo-text">HIRE ME PLZ</span>
+                </a>    
+            </div>
             
-            </nav>
-        
-            {{-- HEADER --}}
-            <header class="relative bg-gray-800 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0 after:border-y after:border-white/10">
-                <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                    <h1 class="text-3xl font-bold tracking-tight text-white"> {{ $header }}</h1>
+            {{-- MIDDLE SECTION --}}
+            <div id="menu-dropdown" class="hidden absolute md:min-h-fit md:block bg-black md:bg-transparent min-h-[60vh] left-0 top-[7vh] md:top-0 w-full px-5">
+                <div class="flex md:items-center md:justify-center flex-col md:flex-row gap-7">
+                    <x-tabLinks href="/" :active="request()->is('/')"> Home </x-tabLinks>
+                    @auth
+                        <x-tabLinks href="/jobs" :active="request()->is('jobs')"> Jobs </x-tabLinks>    
+                    @endauth  
+                    <x-tabLinks href="/almanac" :active="request()->is('almanac')"> Almanac </x-tabLinks>
+                    @auth
+                        <x-tabLinks href="/gacha" :active="request()->is('gacha')"> Gacha </x-tabLinks>    
+                    @endauth 
                 </div>
-            </header>
+            </div>
 
-            {{-- MAIN CONTENT --}}
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
-        
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+            {{-- RIGHT SECTION --}}
+            <div class="flex h-auto p-2">
+                {{-- PROFILE & LOGIN/SIGNUP --}}
+                @auth
+                    <a href="{{ route('profile.index') }}" class="w-full hidden md:block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden hover:bg-white hover:rounded-3xl hover:text-black">Profile</a>
+
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="text-left w-full block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 cursor-pointer focus:outline-hidden hover:bg-white hover:rounded-3xl hover:text-black">Logout</button>
+                    </form>
+                @endauth
+                @guest
+                    <a href="{{ route('register.showRegister') }}" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden hover:bg-white hover:rounded-3xl hover:text-black">Sign up</a>
+                @endguest
+                
+                {{-- MENU BAR --}}
+                <button id="menu" onclick="" class="h-10 w-10 cursor-pointer md:hidden lg:hidden">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 6H20M4 12H20M4 18H20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </button>
+            </div>
+        </nav>
+
+        {{-- MAIN SECTION --}}
+        <main class="grid grid-cols-1 flex-1 bg-white md:grid-cols-2 rounded-b-xl">
+            {{ $slot }}
+        </main>
     </body>
 </html>

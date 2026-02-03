@@ -16,3 +16,20 @@
     font-weight: 400; /* or 700 if you want bold */
     color: white;
 }
+
+/* IM GONNA TURN THESE INTO TAILWIND LATER */
+body {
+    background-color: rgb(30, 30, 30);    
+}
+
+body main {
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-color: rgb(50, 50, 50);
+}
+
+nav {
+    background-color: rgb(50, 50, 50);
+    
+}
