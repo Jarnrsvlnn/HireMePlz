@@ -20,10 +20,10 @@
             </style>
         @endif
     </head>
-    <body class="min-h-screen flex flex-col p-1.5">
+    <body class="h-screen bg-yellow-600 flex flex-col p-2 overflow-hidden">
 
         {{-- NAV BAR --}}
-        <nav class="flex flex-row min-h-14 md:min-h-12 rounded-t-xl justify-between">
+        <nav class="flex flex-row min-h-14 md:min-h-12 shrink-0 rounded-t-xl justify-between bg-[rgb(50,50,50)]">
             {{-- LEFT SECTION --}}
             <div class="h-auto shrink-0 p-2">
                 <a href="/" class="flex">
@@ -33,18 +33,21 @@
             </div>
             
             {{-- MIDDLE SECTION --}}
-            <div id="menu-dropdown" class="hidden absolute md:min-h-fit md:block bg-black md:bg-transparent min-h-[60vh] left-0 top-[7vh] md:top-0 w-full px-5">
-                <div class="flex md:items-center md:justify-center flex-col md:flex-row gap-7">
-                    <x-tabLinks href="/" :active="request()->is('/')"> Home </x-tabLinks>
-                    @auth
-                        <x-tabLinks href="/jobs" :active="request()->is('jobs')"> Jobs </x-tabLinks>    
-                    @endauth  
-                    <x-tabLinks href="/almanac" :active="request()->is('almanac')"> Almanac </x-tabLinks>
-                    @auth
-                        <x-tabLinks href="/gacha" :active="request()->is('gacha')"> Gacha </x-tabLinks>    
-                    @endauth 
+            <div class="relative m-1">
+                <div id="menu-dropdown" class="hidden absolute md:min-h-fit md:block bg-black md:bg-transparent min-h-[60vh] left-0 top-[7vh] md:top-0 w-full px-5">
+                    <div class="flex md:items-center md:justify-center flex-col md:flex-row gap-7">
+                        <x-tabLinks href="/" :active="request()->is('/')"> Home </x-tabLinks>
+                        @auth
+                            <x-tabLinks href="/jobs" :active="request()->is('jobs')"> Jobs </x-tabLinks>    
+                        @endauth  
+                        <x-tabLinks href="/almanac" :active="request()->is('almanac')"> Almanac </x-tabLinks>
+                        @auth
+                            <x-tabLinks href="/gacha" :active="request()->is('gacha')"> Gacha </x-tabLinks>    
+                        @endauth 
+                    </div>
                 </div>
             </div>
+
 
             {{-- RIGHT SECTION --}}
             <div class="flex h-auto p-2">
@@ -69,8 +72,8 @@
         </nav>
 
         {{-- MAIN SECTION --}}
-        <main class="grid grid-cols-1 flex-1 bg-white md:grid-cols-2 rounded-b-xl">
-            {{ $slot }}
+        <main class="grid grid-cols-1 border flex-1 overflow-y-auto bg-white md:grid-cols-2 rounded-b-2xl border-l-[5px] border-r-[5px] border-b-[5px] border-[rgb(50,50,50)]">
+            {{ $slot }} 
         </main>
     </body>
 </html>
