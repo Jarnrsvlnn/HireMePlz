@@ -9,7 +9,11 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100..900&display=swap" rel="stylesheet">
+        
 
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -20,7 +24,7 @@
             </style>
         @endif
     </head>
-    <body class="h-screen bg-yellow-600 flex flex-col p-2 overflow-hidden">
+    <body class="backdrop-blur-2xl h-screen bg-yellow-300 flex flex-col p-2 lg:px-10 overflow-hidden">
 
         {{-- NAV BAR --}}
         <nav class="flex flex-row min-h-14 md:min-h-12 shrink-0 rounded-t-xl justify-between bg-[rgb(50,50,50)]">
@@ -34,7 +38,7 @@
             
             {{-- MIDDLE SECTION --}}
             <div class="relative m-1">
-                <div id="menu-dropdown" class="hidden absolute md:min-h-fit md:block bg-black md:bg-transparent min-h-[60vh] left-0 top-[7vh] md:top-0 w-full px-5">
+                <div id="menu-dropdown" class="hidden absolute md:min-h-fit sm:block bg-black md:bg-transparent min-h-[60vh] left-0 top-[7vh] md:top-0 w-full px-5">
                     <div class="flex md:items-center md:justify-center flex-col md:flex-row gap-7">
                         <x-tabLinks href="/" :active="request()->is('/')"> Home </x-tabLinks>
                         @auth
@@ -53,7 +57,7 @@
             <div class="flex h-auto p-2">
                 {{-- PROFILE & LOGIN/SIGNUP --}}
                 @auth
-                    <a href="{{ route('profile.index') }}" class="w-full hidden md:block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden hover:bg-white hover:rounded-3xl hover:text-black">Profile</a>
+                    <a href="{{ route('profile.index') }}" class="w-full hidden sm:block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden hover:bg-white hover:rounded-3xl hover:text-black">Profile</a>
 
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
@@ -65,15 +69,15 @@
                 @endguest
                 
                 {{-- MENU BAR --}}
-                <button id="menu" onclick="" class="h-10 w-10 cursor-pointer md:hidden lg:hidden">
+                <button id="menu" class="h-10 w-10 cursor-pointer sm:hidden">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 6H20M4 12H20M4 18H20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                 </button>
             </div>
         </nav>
 
         {{-- MAIN SECTION --}}
-        <main class="grid grid-cols-1 border flex-1 overflow-y-auto bg-white md:grid-cols-2 rounded-b-2xl border-l-[5px] border-r-[5px] border-b-[5px] border-[rgb(50,50,50)]">
-            {{ $slot }} 
+        <main style="background-image: url('/images/seamlessbg.jpg')" class="border relative flex-1 w-full overflow-y-auto bg-center rounded-b-2xl border-l-[5px] border-r-[5px] border-b-[5px] border-[rgb(50,50,50)]">
+            {{ $slot }}
         </main>
     </body>
-</html>
+</html> 

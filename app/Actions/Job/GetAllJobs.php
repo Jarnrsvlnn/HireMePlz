@@ -20,7 +20,7 @@ class GetAllJobs {
         $query = $this->sortItems($sortMethod, $query);
 
         return $query
-            ->paginate(16)
+            ->paginate(18)
             ->withQueryString();
     }
 
