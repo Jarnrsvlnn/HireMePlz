@@ -1,1 +1,1 @@
-<a {{ $attributes->merge(['class' => 'draw-button border cursor-pointer bg-gray-200 rounded-lg w-40 h-15 text-center p-4']) }}>{{ $slot }}</a>
+<a {{ $attributes->merge(['class' => 'draw-button border-3 cursor-pointer bg-yellow-300 rounded-4xl w-40 h-11 text-center p-2']) }}>{{ $slot }}</a>

@@ -6,42 +6,45 @@
         Jobs / All
     </x-slot:header>
 
-    <div class="w-full p-10">
+    <div class="w-full px-1 py-10 md:p-10">
         
-        <div class="sticky top-5 z-50 w-full flex justify-between">
+        {{-- STICKY HEAD --}}
+        <div class="relative left-1/2 top-5 -translate-x-1/2 flex justify-center h-15 sm:h-14 bg-black w-screen z-50">
 
-            <h1 class="uppercase bold-text text-lg md:text-3xl font-bold tracking-tight text-black">SORTED BY: {{ \App\Services\StringFormatter::title(request('sort') ?? 'Newest') }}</h1>
+            <div class="sticky p-2 h-full top-5 z-50 flex flex-row w-[85vw] md:w-[60vw] flex-nowrap rounded-lg items-center justify-between bg-yellow-300 border-3 -skew-x-20 transition-all duration-1000 ease-out translate-x-0 starting:-translate-x-100">
 
-            {{-- BUTTON CONTAINER --}}  
-            <div class="flex flex-row justify-end gap-5">
-                {{-- SORT BUTTON --}}
-                <div class="relative inline-block">
-                    <x-button id="sort-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
-                        </svg>     
-                        
-                        <span class="mx-1">Sort</span>    
-                    </x-button>
+                <h1 class="uppercase bold-text text-[clamp(0.6rem,3vw,1.5rem)] font-bold tracking-tight text-black">SORTED BY: {{ \App\Services\StringFormatter::title(request('sort') ?? 'Newest') }}</h1>
 
-                    <div id="sort-options" class="hidden absolute cursor-pointer rounded-lg bg-blue-200">
-                        <x-sort-option sortMethod="newest">Newest</x-sort-option>
-                        <x-sort-option sortMethod="oldest">Oldest</x-sort-option>
-                        <x-sort-option sortMethod="tier">Tier</x-sort-option>
+                {{-- BUTTON CONTAINER --}}  
+                <div class="flex flex-row justify-end gap-2 sm:gap-5">
+                    {{-- SORT BUTTON --}}
+                    <div class="flex-1 sm:flex-0 relative inline-block">
+                        <x-button id="sort-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                            </svg>     
+                            
+                            <span class="mx-1">Sort</span>    
+                        </x-button>
+
+                        <div id="sort-options" class="hidden absolute cursor-pointer bg-yellow-300 border-5">
+                            <x-sort-option sortMethod="newest">Newest</x-sort-option>
+                            <x-sort-option sortMethod="oldest">Oldest</x-sort-option>
+                            <x-sort-option sortMethod="tier">Tier</x-sort-option>
+                        </div>
                     </div>
+                    
+                    {{-- CREATE BUTTON (ADMIN ONLY FEATURE) --}}
+                    @can('create', \App\Models\Job::class)
+                        <x-button class="flex-1 sm:flex-0" id='open-dialog'>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            <span class="mx-1">Create</span>
+                        </x-button>
+                    @endcan
                 </div>
-                
-                {{-- CREATE BUTTON (ADMIN ONLY FEATURE) --}}
-                @can('create', \App\Models\Job::class)
-                    <x-button id='open-dialog'>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
-                        <span class="mx-1">Create</span>
-                    </x-button>
-                @endcan
             </div>
-
         </div>
 
         {{-- JOBS SECTION --}}
@@ -50,56 +53,66 @@
          grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  
          my-4  
          sm:grid-cols-[repeat(auto-fit,minmax(240px,1fr))]
+         md:grid-cols-[repeat(auto-fit,minmax(260px,1fr))]
          lg:grid-cols-[repeat(auto-fit,minmax(280px,1fr))]
          lg:gap-2
          lg:my-10
-         xl:grid-cols-6
-         overflow-show">
+         xl:grid-cols-5
+         overflow-show
+         transition-all delay-200 opacity-100 duration-1200 ease-in-out translate-y-0 starting:opacity-0 starting:translate-y-50">
           
             {{-- JOB CARDS --}}
             @if ($jobs->isNotEmpty())
                 @foreach ($jobs as $job)
-                        
-                {{-- <x-card-border :tier="$job->job_tier" class="flex w-full  overflow-hidden bg-white rounded-lg shadow-lg transform -skew-x-2 sm:max-w-70 md:max-h-50"> --}}
                 
-                <x-card-border
-                    :tier="$job->job_tier"
-                    class="
-                        w-full
-                        aspect-3/4        <!-- mobile: tall -->
-                        sm:aspect-4/5     <!-- 3 columns -->
-                        overflow-hidden
-                        flex
-                        bg-black
-                        rounded-2xl
-                    "
-                >
-                    <div class="flex-1 bg-cover" style="background-image: url('https://images.unsplash.com/photo-1494726161322-5360d4d0eeae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80')"></div>
-                        <div class="flex w-2/3 p-4 md:p-4 flex-col justify-between">
+                <div class="
+                    p-3.5
+                    rounded-2xl
+                    bg-[radial-gradient(circle_at_center,var(--color-gray-200)_60%,var(--color-gray-700)_100%)]
+                ">
+                    <x-card-border
+                        :tier="$job->job_tier"
+                        class="
+                            w-full
+                            aspect-3/4        <!-- mobile: tall -->
+                            sm:aspect-4/5     <!-- 3 columns -->
+                            overflow-hidden
+                            flex
+                            rounded-lg
+                            
+                        ">
 
-                            <div class="flex-1">
-                                {{-- TITLE --}}
-                                <x-job-title>{{ $job['job_title'] ?? 'Unknown Job' }}</x-job-title>
+                        {{-- JOB CONTENT --}}
+                        <div class="flex w-full flex-col justify-between">
 
-                                {{-- DESCRIPTION --}}
-                                <x-job-description>{{ $job['description'] ?? 'No description' }}</x-job-description>
+                            {{-- JOB TITLE --}}
+                            <div class=" mx-2">
+                                <x-job-title :tier="$job['job_tier']">{{ $job['job_title'] ?? 'Unknown Job' }}</x-job-title>
                             </div>
 
-                            <div class="flex flex-1 flex-col justify-end">
+                            {{-- JOB IMAGE --}}
+                            <div class="bg-white h-50 mx-3">
 
-                                {{-- TIER --}}
-                                <div class="flex item-center mb-5">
-                                    <x-tier-coloring type="h1" :tier="$job['job_tier']">
-                                        Tier: {{ $job['job_tier'] ?? 'Unknown Tier' }}
-                                    </x-tier-coloring>
+                            </div>
+
+                            {{-- DESCRIPTION, TIER, SALARY --}}
+                            <div class="flex-1 mx-3 mt-5 xl:mt-1">
+                                <div class="px-1">
+                                    <div class="flex justify-between">
+                                        <x-tier-coloring type="h1" :tier="$job['job_tier']">
+                                            Tier: {{ $job['job_tier'] ?? 'Unknown Tier' }}
+                                        </x-tier-coloring>
+                                        <x-job-salary>{{ $job['salary'] ?? 'Unknown Salary'}}</x-job-salary>
+                                    </div>
+                                    <x-job-description>{{ $job['description'] ?? 'No description' }}</x-job-description>
                                 </div>
-                        
+                            </div>
+
+
+                            {{-- BUTTONS --}}
+                            <div class="flex flex-col mt-auto justify-end mx-4 mb-1 shrink-0">
                                 <div class="flex justify-between item-center">
 
-                                    {{-- SALARY --}}
-                                    <x-job-salary>{{ $job['salary'] ?? 'Unknown Salary'}}</x-job-salary>
-
-                                    {{-- BUTTONS --}}
                                     @auth
                                         <div class="flex flex-row justify-between gap-3 w-50 h-12 md:w-30 md:h-10">
                                             @can('delete', \App\Models\Job::class)
@@ -116,9 +129,9 @@
 
                                 </div>
                             </div>
-
                         </div>
                     </x-card-border>
+                </div>
                 @endforeach
             @else
                 <h1>You are JOBLESS!</h1>

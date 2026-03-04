@@ -4,7 +4,7 @@
 {{-- UPDATE FORM --}}
 @if ($formType == 'update')
     <x-modal-base>
-        <div class="px-6 py-5 bg-white dark:bg-gray-900 rounded-lg shadow-xl">
+        <div class="px-6 py-5 border-7 bg-yellow-300 rounded-lg shadow-xl">
             <h2 class="text-lg font-semibold text-gray-700 dark:text-white">
                 Update Job
             </h2>
@@ -17,7 +17,7 @@
                     <div>
                         <x-form-label>Job Title</x-form-label>
                         <input value="{{ $job->job_title }}" name="job_title" type="text"
-                            class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
+                            class="block w-full px-4 py-2 mt-2 bg-white -skew-x-5 border-5 border-black text-black">
                         
                         <x-form-error name="job_title"/>
                     </div>
@@ -25,7 +25,7 @@
                     <div>
                         <x-form-label>Salary</x-form-label>
                         <input value="{{ $job->salary }}" name="salary" type="text"
-                            class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
+                            class="block w-full px-4 py-2 mt-2 bg-white -skew-x-5 border-5 border-black text-black">
                         
                         <x-form-error name="salary"/>
                     </div>
@@ -33,7 +33,7 @@
                     <div>
                         <x-form-label>Job Tier</x-form-label>
                         <select name="job_tier"
-                            class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
+                            class="block w-full px-4 py-2 mt-2 bg-white -skew-x-5 border-5 border-black text-black">
                             <option value="Godlike" {{ $job->job_tier == 'Godlike' ? 'selected' : '' }}>Godlike</option>
                             <option value="Legendary" {{ $job->job_tier == 'Legendary' ? 'selected' : '' }}>Legendary</option>
                             <option value="Epic" {{ $job->job_tier == 'Epic' ? 'selected' : '' }}>Epic</option>
@@ -47,19 +47,19 @@
                     {{-- DESCRIPTION --}}
                     <div class="sm:col-span-2">
                         <x-form-label>Description</x-form-label>
-                        <textarea name="description" class="block p-2 border w-full h-32 mt-2 rounded-lg border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300">{{ $job->description }}</textarea>
+                        <textarea name="description" class="block p-2 w-full h-32 mt-2 bg-white -skew-x-5 border-5 border-black text-black">{{ $job->description }}</textarea>
                         
                         <x-form-error name="description"/>
                     </div>
                 </div>
                 {{-- BUTTONS --}}
                 <div class="mt-5 flex justify-end gap-3">
-                    <button id="close-dialog" type="button" formmethod="dialog"
-                        class="px-4 py-2 border rounded-md text-white dark:border-gray-700">
-                        Cancel
-                    </button>
+                    <x-button buttonType='button' id="close-dialog" type="button" formmethod="dialog"
+                        class="px-4 py-2 text-white">
+                        Close
+                    </x-button>
                     <x-button buttonType='button' type="submit"
-                        class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-500">
+                        class="px-4 py-2 text-white">
                         Save
                     </x-button>
                 </div>
@@ -70,9 +70,9 @@
 {{-- CREATE FORM --}}
 @else
     <x-modal-base>
-        <div class="px-6 py-5 bg-white dark:bg-gray-900 rounded-lg shadow-xl">
-            <h2 class="text-lg font-semibold text-gray-700 dark:text-white">
-                Create Job
+        <div class="px-6 py-5v bg-yellow-300 border-7 border-black shadow-xl">
+            <h2 class="text-lg bold-text">
+                CREATE JOB
             </h2>
 
             <form action="{{ route('jobs.store') }}" method="POST" class="mt-4">
@@ -82,7 +82,7 @@
                     <div>
                         <x-form-label>Job Title</x-form-label>
                         <input id="job_title" name="job_title" type="text" placeholder="ex. Software Engineer" 
-                            class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
+                            class="block w-full px-4 py-2 mt-2 bg-white -skew-x-5 border-5 border-black text-black">
                         
                         <x-form-error name="job_title"/>
                     </div>
@@ -90,7 +90,7 @@
                     <div>
                         <x-form-label>Salary</x-form-label>
                         <input name="salary" type="text" placeholder="ex. $67" required
-                            class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
+                            class="block w-full px-4 py-2 mt-2 bg-white -skew-x-5 border-5 border-black text-black">
                     
                         <x-form-error name="salary"/>
                     </div>
@@ -98,7 +98,7 @@
                     <div>
                         <x-form-label>Category</x-form-label>
                         <select name="category" required
-                            class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
+                            class="block w-full px-4 py-2 mt-2 bg-white -skew-x-5 border-5 border-black text-black">
 
                             <option value="Technology">Technology</option>
                             <option value="Design & Creative">Design & Creative</option>
@@ -128,7 +128,7 @@
                     {{-- DESCRIPTION --}}
                     <div class="sm:col-span-2">
                         <x-form-label>Description</x-form-label>
-                        <textarea required name="description" placeholder="Write details..." class="p-2 block border w-full h-32 mt-2 rounded-lg border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-600 dark:text-gray-300"></textarea>
+                        <textarea required name="description" placeholder="Write details..." class="p-2 block w-full h-32 mt-2 bg-white -skew-x-5 border-5 border-black text-black"></textarea>
                             
                         <x-form-error name="description"/>
                     </div>
@@ -137,7 +137,7 @@
                     <div>
                         <x-form-label>Job Tier</x-form-label>
                         <select name="job_tier" required
-                            class="block w-full px-4 py-2 mt-2 rounded-md border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300">
+                            class="block w-full px-4 py-2 mt-2 bg-white -skew-x-5 border-5 border-black text-black">
                             <option value="Godlike">Godlike</option>
                             <option value="Legendary">Legendary</option>
                             <option value="Epic">Epic</option>  
@@ -150,13 +150,13 @@
                     </div>
                 </div>
                 {{-- BUTTONS --}}
-                <div class="mt-5 flex justify-end gap-3">
-                    <button id="close-dialog" type="button" formmethod="dialog"
-                        class="px-4 py-2 border rounded-md text-white dark:border-gray-700">
+                <div class="mt-5 flex justify-end gap-1 pb-3">
+                    <x-button buttonType='button' id="close-dialog" type="button" formmethod="dialog"
+                        class="px-4 py-2 text-white">
                         Close
-                    </button>
-                    <x-button buttonType='button' type="submit">
-                        Add
+                    </x-button>
+                    <x-button buttonType='button' type="submit" class="px-4 py-2 text-white">
+                        Create
                     </x-button>
                 </div>
             </form>

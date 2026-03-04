@@ -13,7 +13,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100..900&display=swap" rel="stylesheet">
-        
 
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -24,22 +23,22 @@
             </style>
         @endif
     </head>
-    <body class="backdrop-blur-2xl h-screen bg-yellow-300 flex flex-col p-2 lg:px-10 overflow-hidden">
+    <body style="background-image: url('/images/brick.jpg')" class="h-screen bg-cover bg-no-repeat bg-center flex flex-col p-2 lg:px-30 lg:py-10 overflow-hidden">
 
         {{-- NAV BAR --}}
-        <nav class="flex flex-row min-h-14 md:min-h-12 shrink-0 rounded-t-xl justify-between bg-[rgb(50,50,50)]">
+        <nav class="flex flex-row min-h-14 md:min-h-12 shrink-0 rounded-t-xl justify-between bg-[rgb(50,50,50)] shadow-[0_-1px_20px_1px_black]">
             {{-- LEFT SECTION --}}
-            <div class="h-auto shrink-0 p-2">
+            <div class="h-auto shrink-0 p-2 -skew-x-10">
                 <a href="/" class="flex">
                     <x-hmp-logo class="w-10 h-10"/>
-                    <span class="logo-text">HIRE ME PLZ</span>
+                    <span class="bold-text text-white">HIRE ME PLZ</span>
                 </a>    
             </div>
             
             {{-- MIDDLE SECTION --}}
-            <div class="relative m-1">
-                <div id="menu-dropdown" class="hidden absolute md:min-h-fit sm:block bg-black md:bg-transparent min-h-[60vh] left-0 top-[7vh] md:top-0 w-full px-5">
-                    <div class="flex md:items-center md:justify-center flex-col md:flex-row gap-7">
+            <div class="relative m-1 w-full">
+                <div id="menu-dropdown" class="hidden fixed left-0 md:min-h-fit sm:block bg-yellow-300 border-black md:absolute border-7 md:border-none md:bg-transparent h-[60vh] top-[6vh] md:top-0 w-full px-1 z-70 md:z-0">
+                    <div class="flex md:items-center h-full md:h-auto md:justify-center flex-col md:flex-row gap-7">
                         <x-tabLinks href="/" :active="request()->is('/')"> Home </x-tabLinks>
                         @auth
                             <x-tabLinks href="/jobs" :active="request()->is('jobs')"> Jobs </x-tabLinks>    
@@ -52,12 +51,11 @@
                 </div>
             </div>
 
-
             {{-- RIGHT SECTION --}}
             <div class="flex h-auto p-2">
                 {{-- PROFILE & LOGIN/SIGNUP --}}
                 @auth
-                    <a href="{{ route('profile.index') }}" class="w-full hidden sm:block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden hover:bg-white hover:rounded-3xl hover:text-black">Profile</a>
+                    <a href="{{ route('profile.index') }}" class="w-full hidden px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden hover:bg-white hover:rounded-3xl hover:text-black">Profile</a>
 
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
@@ -76,7 +74,12 @@
         </nav>
 
         {{-- MAIN SECTION --}}
-        <main style="background-image: url('/images/seamlessbg.jpg')" class="border relative flex-1 w-full overflow-y-auto bg-center rounded-b-2xl border-l-[5px] border-r-[5px] border-b-[5px] border-[rgb(50,50,50)]">
+        <main 
+            style="background-image: url('/images/randomplaytwo.jpg')" 
+            class="border px-5 relative flex-1 w-full overflow-y-auto bg-center rounded-b-2xl 
+                border-l-[5px] border-r-[5px] border-b-[5px] border-[rgb(50,50,50)] 
+                bg-no-repeat bg-cover
+                shadow-[0_15px_40px_0px_black]">
             {{ $slot }}
         </main>
     </body>

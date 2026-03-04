@@ -1,1 +1,1 @@
-<p {{ $attributes->merge(['class' => 'text-white text-center text-lg text-left p-5']) }}>{{ $slot }}</p>
+<p {{ $attributes->merge(['class' => 'text-white text-right ml-auto text-[clam(1rem,10vw,2rem)] text-left h-full w-60 overflow-y-auto']) }}>{{ $slot }}</p>

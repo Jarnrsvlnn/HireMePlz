@@ -1,1 +1,1 @@
-<p class="mt-1 max-h-full overflow-auto wrap-break-word text-base md:text-sm text-left text-gray-600 dark:text-gray-400">{{ $slot }}</p>
+<p class="max-h-full overflow-auto wrap-break-word text-base md:text-sm text-justify text-black line-clamp-3 overflow-y-hidden">{{ $slot }}</p>

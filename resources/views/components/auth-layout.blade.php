@@ -19,10 +19,12 @@
             </style>
         @endif
     </head>
-    <body class="flex lg:p-2 min-h-screen flex-col h-full">
+    <body style="background-image: url('/images/brick.jpg')" class="backdrop-blur-2xl h-screen bg-cover bg-center bg-no-repeat flex flex-col p-2 lg:px-30 lg:py-10 overflow-hidden">
 
-        {{ $slot }}
-        
+        <main style="background-image: url('/images/randomplaytwo.jpg')" class="border px-5 relative flex-1 w-full overflow-y-auto bg-center bg-no-repeat bg-cover rounded-2xl border-t-65 border-l-[5px] border-r-[5px] border-b-[5px] border-[rgb(50,50,50)] shadow-[0_15px_40px_0px_black]">
+            {{ $slot }}
+        </main>
+
         <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
     </body>
 </html>
