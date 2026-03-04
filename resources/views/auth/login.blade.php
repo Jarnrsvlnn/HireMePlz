@@ -21,7 +21,7 @@
               placeholder:text-gray-300
               autofill:bg-black autofill:text-white
               [:-webkit-autofill]:shadow-[0_0_0px_1000px_white_inset]
-              [:-webkit-autofill]:text-black"/>z
+              [:-webkit-autofill]:text-black"/>
             </div>
 
             <x-form-error name="email"/>
@@ -30,9 +30,6 @@
           <div>
             <div class="flex items-center justify-between">
               <label for="password" class="block text-sm/6 font-medium text-gray-100">Password</label>
-              <div class="text-sm">
-                <a href="#" class="font-semibold text-indigo-400 hover:text-indigo-300">Forgot password?</a>
-              </div>
             </div>
             <div class="mt-2">
               <input required id="password" type="password" name="password" class="block border-4 w-full rounded-md 
